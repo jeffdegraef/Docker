@@ -24,4 +24,3 @@ FROM nodered/node-red-docker
  WORKDIR $HOME/.node-red
  COPY package.json $HOME/.node-red/package.json
  RUN npm install
-
