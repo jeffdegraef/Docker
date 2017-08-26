@@ -1,0 +1,117 @@
+Install docker
+
+sudo apt-get update
+sudo timedatectl set-timezone Europe/Brussels
+sudo apt-get install apt-transport-https ca-certificates curl software-properties-common -y
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository \
+        "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+        $(lsb_release -cs) \
+        stable"
+sudo apt-get update
+sudo apt-get install docker-ce -y
+
+
+============  Dockerfile =================
+
+FROM nodered/node-red-docker
+ USER root
+ RUN apt-get update
+ RUN apt-get install python-pip -y
+ RUN apt-get install libpq-dev build-essential python-dev -y
+ RUN apt-get install git -y
+ RUN apt-get install libxml2 libxml2-dev libxslt1-dev -y
+ RUN apt-get install libtiff5-dev libjpeg62-turbo-dev zlib1g-dev libfreetype6-dev liblcms2-dev  -y
+ RUN apt-get install libwebp-dev tcl8.6-dev tk8.6-dev python-tk -y
+ RUN curl -sL https://deb.nodesource.com/setup_4.x | bash -
+ RUN apt-get install -y nodejs build-essential -y
+ RUN apt-get update && apt-get upgrade -y
+ WORKDIR $HOME/.node-red
+ RUN npm install node-red-node-mongodb
+ RUN  npm install node-red-contrib-mongodb2
+ RUN  npm install node-red-contrib-meraki-cmx
+ RUN  npm install node-red-node-twilio
+ RUN  npm install node-red-contrib-spark
+ RUN  npm install node-red-contrib-dns
+ RUN  npm install node-red-contrib-excel
+ RUN  npm install node-red-contrib-googlechart
+ RUN  npm install node-red-contrib-apiai
+ RUN  npm install node-red-contrib-asterisk
+ RUN  npm install node-red-contrib-ftp
+ RUN  npm install node-red-contrib-json
+ RUN  npm install node-red-contrib-slackbot
+ RUN  npm install node-red-node-google
+ RUN  npm install node-red-node-swagger
+
+OR
+
+FROM nodered/node-red-docker
+ USER root
+ RUN apt-get update
+ RUN apt-get install python-pip -y
+ RUN apt-get install libpq-dev build-essential python-dev -y
+ RUN apt-get install git -y
+ RUN apt-get install libxml2 libxml2-dev libxslt1-dev -y
+ RUN apt-get install libtiff5-dev libjpeg62-turbo-dev zlib1g-dev libfreetype6-dev liblcms2-dev  -y
+ RUN apt-get install libwebp-dev tcl8.6-dev tk8.6-dev python-tk -y
+ RUN curl -sL https://deb.nodesource.com/setup_4.x | bash -
+ RUN apt-get install -y nodejs build-essential -y
+ RUN apt-get update && apt-get upgrade -y
+ WORKDIR $HOME/.node-red
+ RUN npm install node-red-node-mongodb --save
+ RUN  npm install node-red-contrib-mongodb2 --save
+ RUN  npm install node-red-contrib-meraki-cmx --save
+ RUN  npm install node-red-node-twilio --save
+ RUN  npm install node-red-contrib-spark --save
+ RUN  npm install node-red-contrib-dns --save
+ RUN  npm install node-red-contrib-excel --save
+ RUN  npm install node-red-contrib-googlechart --save
+ RUN  npm install node-red-contrib-apiai --save
+ RUN  npm install node-red-contrib-asterisk --save
+ RUN  npm install node-red-contrib-ftp --save
+ RUN  npm install node-red-contrib-json --save
+ RUN  npm install node-red-contrib-slackbot --save
+ RUN  npm install node-red-node-google --save
+ RUN  npm install node-red-node-swagger --save
+
+ OR
+
+
+ FROM nodered/node-red-docker
+  USER root
+  RUN apt-get update
+  RUN apt-get install python-pip -y
+  RUN apt-get install libpq-dev build-essential python-dev -y
+  RUN apt-get install git -y
+  RUN apt-get install libxml2 libxml2-dev libxslt1-dev -y
+  RUN apt-get install libtiff5-dev libjpeg62-turbo-dev zlib1g-dev libfreetype6-dev liblcms2-dev  -y
+  RUN apt-get install libwebp-dev tcl8.6-dev tk8.6-dev python-tk -y
+  RUN curl -sL https://deb.nodesource.com/setup_4.x | bash -
+  RUN apt-get install -y nodejs build-essential -y
+  RUN apt-get update && apt-get upgrade -y
+  WORKDIR $HOME/.node-red
+  # build application
+  # [TIP] minimize image rebuilds needs by isolating dependencies from declarative aspects
+  COPY package.json $HOME/.node-red/package.json
+  RUN npm install
+
+============  Build local Docker image =================
+sudo docker build -t jeffdegraef/node-red:2.1 .
+
+============  Make node-red repo =================
+make node-red repository on https://hub.docker.com/r/jeffdegraef/node-red/
+
+============  Upload Docker image to Docker Hub =================
+sudo docker images
+sudo docker login
+sudo docker tag 1e70aa2fa1da jeffdegraef/node-red:2.1 NIET ALTIJD NODIG
+sudo docker push jeffdegraef/node-red:2.1
+
+sudo docker run -it -p 1880:1880 --name nodered jeffdegraef/node-red:2.2
+OR
+sudo sudo docker run -d -p 1880:1880 --name nodered jeffdegraef/node-red:2.2
+
+sudo docker ps
+sudo    docker exec -it ef52f45605352756af40362cb3a6632a9d12265413f18e2e453d665616732f0d /bin/bash
+
+
