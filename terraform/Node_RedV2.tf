@@ -1,12 +1,12 @@
 provider "aws" {
-  access_key = "AKIAJNO2FPN3K7R4I7RA"
-  secret_key = "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"
+  access_key = ""
+  secret_key = ""
   region     = "us-west-2"
 }
 
 resource "aws_key_pair" "deployer" {
   key_name = "deployer-key"
-  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCyEgeAgPUXOMZk5nHbBDfrdlS8EkC49jcD3+qUwWjFTgvG/lrdWx1/p4aeiJ/1uJEbWV5mcxZoPa//vXjtcm60LRWcU3SZqMRzKHbCDHe7/1sH25pNo6xTSib59NIYyKgVGInkA9LQEnHxey2flIBpLOG1hA7Koz2sNixj+6t+RUqff+if+LGXg9dBMefBBhCFxM/CeP3NTmHM0RWmfcwNfHCwDF/C6pygSs+pKRFWskgWsr6yD8tB7bFO4XbM2xg/JqCWY0xpP8L4n1rd11TO02MotUYV9lH/VZGEtPxoDMlJXcxnhQXDf3AQDtr4hO1xJ9U47EUoO5Fjl+DlWDhF"
+  public_key = ""
 }
 
 resource "aws_security_group" "terraform" {

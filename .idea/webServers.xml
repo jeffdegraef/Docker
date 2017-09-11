@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="9f0aacb2-7a73-4500-84ad-5aa0abfffe55" name="Local Node-red" url="http://192.168.10.215">
+        <fileTransfer host="192.168.10.215" port="22" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+      <webServer id="82f47d57-54c8-43b2-9d47-16d5203f1101" name="AWS" url="http://ec2-54-242-126-81.compute-1.amazonaws.com">
+        <fileTransfer host="ec2-54-242-126-81.compute-1.amazonaws.com" port="22" privateKey="C:\Users\jozef.degraef\Google Drive\Arduino\AWS\MainServer.pem" accessType="SFTP" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

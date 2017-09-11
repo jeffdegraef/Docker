@@ -1,0 +1,32 @@
+# Use phusion/baseimage as base image. To make your builds reproducible, make
+# sure you lock down to a specific version, not to `latest`!
+# See https://github.com/phusion/baseimage-docker/blob/master/Changelog.md for
+# a list of version numbers.
+FROM phusion/baseimage:0.9.22
+
+# Use baseimage-docker's init system.
+CMD ["/sbin/my_init"]
+
+USER root
+ RUN apt-get update
+ RUN apt-get install python-pip -y
+ RUN apt-get install libpq-dev build-essential python-dev -y
+ RUN apt-get install git -y
+ RUN apt-get update
+ RUN apt-get install libxml2 libxml2-dev libxslt1-dev -y
+ RUN apt-get install libtiff5-dev libjpeg62-turbo-dev zlib1g-dev libfreetype6-dev liblcms2-dev  -y
+ RUN apt-get install libwebp-dev tcl8.6-dev tk8.6-dev python-tk -y
+ RUN curl -sL https://deb.nodesource.com/setup_4.x | bash -
+ RUN apt-get install -y nodejs build-essential -y
+ RUN apt-get update && apt-get upgrade -y
+ # Install Mosquitto
+ RUN wget http://repo.mosquitto.org/debian/mosquitto-repo.gpg.key
+ RUN apt-key add mosquitto-repo.gpg.key
+ RUN wget http://repo.mosquitto.org/debian/mosquitto-wheezy.list
+ RUN apt-get update -y
+ RUN apt-get install mosquitto -y
+ CMD /etc/init.d/mosquitto
+
+# Clean up APT when done.
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
