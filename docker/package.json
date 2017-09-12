@@ -44,7 +44,8 @@
     "node-red-node-mongodb": "0.0.13",
     "node-red-node-swagger": "^0.1.8",
     "node-red-node-twilio": "0.0.14",
-    "node-red-contrib-ale-rainbow": "*"
+    "node-red-contrib-ale-rainbow": "*",
+    "node-red-node-email": "*"
   },
   "engines": {
     "node": "4.*.*"

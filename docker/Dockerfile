@@ -14,4 +14,5 @@ FROM nodered/node-red-docker
  # [TIP] minimize image rebuilds needs by isolating dependencies from declarative aspects
  WORKDIR $HOME/.node-red
  COPY package.json $HOME/.node-red/package.json
+ COPY flows.json $HOME/.node-red/flows.json
  RUN npm install
