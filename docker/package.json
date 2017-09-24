@@ -45,7 +45,9 @@
     "node-red-node-swagger": "^0.1.8",
     "node-red-node-twilio": "0.0.14",
     "node-red-contrib-ale-rainbow": "*",
-    "node-red-node-email": "*"
+    "node-red-node-email": "*",
+    "node-red-contrib-chatbot": "*",
+    "node-red-contrib-web-worldmap": "*"
   },
   "engines": {
     "node": "4.*.*"

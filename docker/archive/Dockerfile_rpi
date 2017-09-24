@@ -16,5 +16,5 @@ FROM resin/rpi-raspbian:latest
  COPY package.json $HOME/.node-red/package.json
  RUN npm install
  COPY package.json $HOME/.node-red/package.json
- COPY flows.json $HOME/.node-red/flows_rpi.json
+ COPY flows_rpi.json $HOME/.node-red/flows_rpi.json
  CMD [ "npm", "start" ]

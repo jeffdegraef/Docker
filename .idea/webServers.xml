@@ -2,8 +2,8 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="9f0aacb2-7a73-4500-84ad-5aa0abfffe55" name="Local Node-red" url="http://192.168.10.215">
-        <fileTransfer host="192.168.10.215" port="22" accessType="SFTP">
+      <webServer id="9f0aacb2-7a73-4500-84ad-5aa0abfffe55" name="Local Node-red" url="http://192.168.10.217">
+        <fileTransfer host="192.168.10.217" port="22" accessType="SFTP">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>

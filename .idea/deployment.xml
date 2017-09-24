@@ -12,7 +12,7 @@
       <paths name="Local Node-red">
         <serverdata>
           <mappings>
-            <mapping deploy="/home/pi/terraform" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/home/pi/" local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>
