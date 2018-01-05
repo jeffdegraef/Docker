@@ -1,1 +1,654 @@
-[{"id":"7d8ba940.199e08","type":"mqtt in","z":"7d9ad29c.85c98c","name":"","topic":"ArduinoGateway/MQTT/Publish/Event","qos":"2","broker":"5a2b0ad2.aaa674","x":230,"y":80,"wires":[["7e2036f9.efb988"]]},{"id":"7e2036f9.efb988","type":"function","z":"7d9ad29c.85c98c","name":"Parse MQTT String","func":"msg.OriginalPayload = msg.payload;\n\nSplitTheString(msg.payload);\n\nswitch (msg.NodeID) {\n    case \"1\":\n        msg.NodeIDName = \"Livingroom\";\n        break;\n    case \"2\":\n        msg.NodeIDName = \"Kitchen\";\n        break;\n    case \"3\":\n        msg.NodeIDName = \"Garden\";\n        break;\n    case \"4\":\n        msg.NodeIDName = \"Master bedroom\";\n        break;\n    case \"5\":\n        msg.NodeIDName = \"Bathroom\";\n        break;\n    case \"6\":\n        msg.NodeIDName = \"Hal\";\n        break;\n    case \"7\":\n        msg.NodeIDName = \"Hal upstairs\";\n        break;\n    case \"8\":\n        msg.NodeIDName = \"Bedroom 1\";\n        break;\n    case \"9\":\n        msg.NodeIDName = \"Bedroom 2\";\n        break;\n    case \"10\":\n        msg.NodeIDName = \"Office\";\n        break;\n    case \"11\":\n        msg.NodeIDName = \"Toilet\";\n        break;\n    case \"12\":\n        msg.NodeIDName = \"Garage\";\n        break;\n    default:\n    \tmsg.NodeIDName = \"Unknown\";\n}\n\n\nfunction SplitTheString(ResultStr) {\n    if (ResultStr !== null) {\n        var SplitChars = '/';\n        if (ResultStr.indexOf(SplitChars) >= 0) {\n            var DtlStr = ResultStr.split(SplitChars);\n            msg.GatewayID  = DtlStr[0];\n            msg.NetworkID = DtlStr[1];\n            msg.NodeID = DtlStr[2];\n            msg.DeviceID = DtlStr[3];\n            msg.Variable1 = DtlStr[4];\n            msg.Variable2 = DtlStr[5];\n        }\n    }\n}\nreturn msg;","outputs":1,"noerr":0,"x":180.66665649414062,"y":152.6666488647461,"wires":[["48276c92.463354","a9c65aab.131968"]]},{"id":"a9c65aab.131968","type":"change","z":"7d9ad29c.85c98c","name":"","rules":[{"t":"set","p":"timestamp","pt":"msg","to":"payload","tot":"str"}],"action":"","property":"","from":"","to":"","reg":false,"x":132.66665649414062,"y":318.0000305175781,"wires":[["e7f0baf8.cc4c48"]]},{"id":"e7f0baf8.cc4c48","type":"function","z":"7d9ad29c.85c98c","name":"Update Context","func":"\ncontext.global.data = context.global.data || new Object();\n\ncontext.global.data.timestamp = new Date().toLocaleString();\ncontext.global.data.GatewayID = msg.GatewayID;\ncontext.global.data.NetworkID = msg.NetworkID;\ncontext.global.data.NodeID = msg.NodeID;\ncontext.global.data.DeviceID = msg.DeviceID;\ncontext.global.data.Variable1 = msg.Variable1;\ncontext.global.data.Variable2 = msg.Variable2;\ncontext.global.data.payload = msg.payload;\n\n//node.warn(\"time:\" + context.global.data.timestamp);\n\nreturn msg;","outputs":1,"noerr":0,"x":126.66665649414062,"y":361.66668701171875,"wires":[["d8364402.4fdf88"]]},{"id":"d8364402.4fdf88","type":"function","z":"7d9ad29c.85c98c","name":"db Cache","func":"if(context.global.temp === undefined || context.global.temp === null)\n{\n    \n    //initialising the global context, this happens when node-red is rebooted\n    node.warn(\"Global context initialised\" );\n    context.global.temp = new Object();\n    context.global.temp.newDeltaInHours = 0;\n}\n        \n\nif(context.global.temp.newDeltaInHours > 1 )\n{\n   //if the cache file is full, we flush it to the database and re-initialise the global context object\n    node.warn(\"Newdelta hours are :\" + context.global.temp.newDeltaInHours);\n    node.warn(\"Creating new temp object, current time is\" + new Date());\n    context.global.temp = new Object();\n    context.global.temp.newDeltaInHours = 0;\n    \n    //One hour has passed, now do something, like flushing the cache data to database.\n    \n    node.warn(\"Flushing to database at \" + new Date().valueOf());\n    //IMPORTANT, delete the cachefile\n    return [ null,msg];\n\n    //node.warn(\"context global temp new object:\" + context.global.temp);\n}\nelse\n{\n    //if cache file is not full we first check if the global context variables are initialised or not\n    if (context.global.temp.difftimecache === undefined || context.global.temp.difftimecache === null || context.global.temp.difftimecache !== context.global.temp.difftimecache) \n    {\n        // this means the global context main object is initialised but not the different sub attributes, so we are doing that here\n        node.warn(\"Initialising difftimecache and oldtime\");\n        context.global.temp.difftimecache = 0;\n        context.global.temp.oldtime = new Date().valueOf();\n         \n        //node.warn(\"time is now defined:\" + context.global.temp.oldtime);\n        //node.warn(\"delta is now defined:\" + context.global.temp.difftimecache);\n        context.global.temp.counter = 1;\n          \n        //TODO initialise JSON file and first data entry\n    }\n    else\n    {\n        //global context main and child attributes are all initialised, this means we can start measuring time delta.\n        //node.warn(\"in else statement\");\n        //context.global.temp = context.global.temp;\n        context.global.temp.counter++;\n        \n        //defining the current time\n        var currentTime = new Date().valueOf();\n        //node.warn(\"time now:\" + currentTime);\n        \n        //Quiring current delta, should be 0 or more\n        var currentDelta = context.global.temp.difftimecache;\n        //node.warn(\"current delta:\" + currentDelta);\n        \n        // Now calculating the new delta, which is substracting the old time from the new time\n        var newDelta = currentTime - context.global.temp.oldtime;\n        //node.warn(\"newDelta:\" + newDelta);\n        \n        //convering newdelta in hours.\n        var newDeltaInHours = newDelta/1000/60/60;\n        \n        //putting the newdeltahours in global context\n        context.global.temp.newDeltaInHours = newDeltaInHours;\n        //Math.abs(currentTime - currentDelta) / 3600\n        //node.warn(\"calculation:\" + newDeltaInHours);\n        \n        //updating the timediffcache with the new delta\n        context.global.temp.difftimecache = newDelta;\n        \n        //ow, we put the new delta and hours delta in the msg objext\n        msg.timedelta = newDelta;\n        msg.newDeltaInHours = newDeltaInHours;\n       \n        // Update JSON file with new data entries\n        UpdateJson()\n        \n        //updat global context with latest variables\n        context.global.temp.Variable1 = msg.Variable1;\n        context.global.temp.Variable2 = msg.Variable2;\n        \n        //sending msg with JSON in payload to node-red function to write the entry in the log\n        return [msg,null];\n      \n    }\n    \n  \n}\n\n\nfunction UpdateJson() {\n    //node.warn(\"Updating JSON\");\n    var UpdateEntry = {};\n    UpdateEntry.GatewayID = msg.GatewayID;\n    UpdateEntry.NetworkID = msg.NetworkID;\n    UpdateEntry.NodeID = msg.NodeID;\n    UpdateEntry.NodeIDName = msg.NodeIDName;\n    UpdateEntry.DeviceID = msg.DeviceID;\n    UpdateEntry.Variable1 = msg.Variable1;\n    UpdateEntry.Variable2 = msg.Variable2;\n    msg.payload = UpdateEntry;\n    //node.warn(\"JSON String: \" + msg.payload);\n    \n    \n}\n        \n    //node.warn(\"context global temp :\" + context.global.temp);\n\n","outputs":"2","noerr":0,"x":119.66665649414062,"y":414.6667175292969,"wires":[["9fafdfa3.95679","2e497725.b8e968","d968d756.3ad478","87697bee.0de8a8"],["65f38747.67f568"]]},{"id":"9fafdfa3.95679","type":"file","z":"7d9ad29c.85c98c","name":"","filename":"JSON_Events","appendNewline":true,"createDir":false,"overwriteFile":"false","x":399.6666564941406,"y":248.3333740234375,"wires":[]},{"id":"65f38747.67f568","type":"file","z":"7d9ad29c.85c98c","name":"","filename":"JSON_Events","appendNewline":true,"createDir":false,"overwriteFile":"delete","x":144.66665649414062,"y":469.3334045410156,"wires":[]},{"id":"2e497725.b8e968","type":"function","z":"7d9ad29c.85c98c","name":"Copy","func":"msg.OriginalPayload = msg.payload;\nreturn [msg,msg];","outputs":"2","noerr":0,"x":297.6666564941406,"y":413.66668701171875,"wires":[["613af5c5.dd89dc"],["23392da4.7e0642"]]},{"id":"613af5c5.dd89dc","type":"function","z":"7d9ad29c.85c98c","name":"Temperature","func":"msg.payload = msg.Variable1;\nreturn msg;","outputs":1,"noerr":0,"x":454.66656494140625,"y":409.6666717529297,"wires":[["855cf18c.5871d"]]},{"id":"23392da4.7e0642","type":"function","z":"7d9ad29c.85c98c","name":"Humidity","func":"msg.payload = msg.Variable2;\nreturn msg;","outputs":1,"noerr":0,"x":448.6665344238281,"y":453.6667785644531,"wires":[["e9e364f0.79ae38"]]},{"id":"855cf18c.5871d","type":"function","z":"7d9ad29c.85c98c","name":"Crossbar IO AWS","func":"var autobahn = context.global.autobahn;\nvar connection = new autobahn.Connection({\n   url: 'ws://ec2-54-149-139-192.us-west-2.compute.amazonaws.com:8080/ws',\n   realm: 'React'}\n);\n//node.warn(\"authbahn connection created\");\nconnection.onopen = function (session) {\n\n   // SUBSCRIBE to a topic and receive events\n   //\n   //node.warn(\"in .onopen\");\n   session.publish('com.example.ontemperature', [msg.payload,msg.OriginalPayload]);\n   //node.warn(msg.payload + \"° Celcius published from \" + msg.NodeIDName + \".\");\n};\n\nconnection.open();\n\nreturn msg;","outputs":1,"noerr":0,"x":767.6666259765625,"y":409.6667175292969,"wires":[[]]},{"id":"e9e364f0.79ae38","type":"function","z":"7d9ad29c.85c98c","name":"Crossbar IO AWS","func":"var autobahn = context.global.autobahn;\nvar connection = new autobahn.Connection({\n   url: 'ws://ec2-54-149-139-192.us-west-2.compute.amazonaws.com:8080/ws',\n   realm: 'React'}\n);\n//node.warn(\"authbahn connection created\");\nconnection.onopen = function (session) {\n\n   // SUBSCRIBE to a topic and receive events\n   //\n   //node.warn(\"in .onopen\");\n   session.publish('com.example.onhumidity', [msg.payload]);\n   //node.warn(msg.payload + \" humidity published from \" + msg.NodeIDName + \".\");\n};\n\nconnection.open();\n\nreturn msg;","outputs":1,"noerr":0,"x":769.6666259765625,"y":457.6667175292969,"wires":[[]]},{"id":"d9191a9f.407ed8","type":"inject","z":"7d9ad29c.85c98c","name":"","topic":"55","payload":"55","payloadType":"str","repeat":"","crontab":"","once":false,"x":670,"y":240,"wires":[["855cf18c.5871d","87697bee.0de8a8"]]},{"id":"d968d756.3ad478","type":"debug","z":"7d9ad29c.85c98c","name":"","active":false,"console":"false","complete":"true","x":411,"y":306,"wires":[]},{"id":"48276c92.463354","type":"debug","z":"7d9ad29c.85c98c","name":"","active":false,"console":"false","complete":"payload","x":509,"y":141,"wires":[]},{"id":"87697bee.0de8a8","type":"mqtt out","z":"7d9ad29c.85c98c","name":"","topic":"ArduinoGateway/MQTT/Publish/Event","qos":"","retain":"","broker":"7b562af0.dce684","x":750,"y":520,"wires":[]},{"id":"5a2b0ad2.aaa674","type":"mqtt-broker","z":"7d9ad29c.85c98c","broker":"192.168.10.215","port":"1883","clientid":"","usetls":false,"compatmode":true,"keepalive":"60","cleansession":true,"willTopic":"","willQos":"0","willPayload":"","birthTopic":"","birthQos":"0","birthPayload":""},{"id":"7b562af0.dce684","type":"mqtt-broker","z":"","broker":"ec2-54-242-126-81.compute-1.amazonaws.com","port":"1883","clientid":"","usetls":false,"compatmode":true,"keepalive":"60","cleansession":true,"willTopic":"","willQos":"0","willPayload":"","birthTopic":"","birthQos":"0","birthPayload":""}]
+[
+  {
+    "id": "3f0a5568.69490a",
+    "type": "tab",
+    "label": "Incoming SMS",
+    "disabled": false,
+    "info": ""
+  },
+  {
+    "id": "6ea0f481.f4e72c",
+    "type": "tab",
+    "label": "Portfolio",
+    "disabled": false,
+    "info": ""
+  },
+  {
+    "id": "81b9956f.f67058",
+    "type": "tab",
+    "label": "MERAKI NODE",
+    "disabled": false,
+    "info": ""
+  },
+  {
+    "id": "3df507d3.ec71b8",
+    "type": "mqtt-broker",
+    "z": "",
+    "broker": "ec2-34-233-121-229.compute-1.amazonaws.com",
+    "port": "1883",
+    "clientid": "",
+    "usetls": false,
+    "compatmode": true,
+    "keepalive": "60",
+    "cleansession": true,
+    "willTopic": "",
+    "willQos": "0",
+    "willPayload": "",
+    "birthTopic": "",
+    "birthQos": "0",
+    "birthPayload": ""
+  },
+  {
+    "id": "d290a4d9.c5e218",
+    "type": "meraki-cmx-settings",
+    "z": "",
+    "name": "DD Meraki"
+  },
+  {
+    "id": "8c8f0fbe.f9a2a",
+    "type": "mqtt out",
+    "z": "3f0a5568.69490a",
+    "name": "",
+    "topic": "pets/food/instruction",
+    "qos": "",
+    "retain": "",
+    "broker": "3df507d3.ec71b8",
+    "x": 580,
+    "y": 100,
+    "wires": []
+  },
+  {
+    "id": "c474ac14.5aec8",
+    "type": "inject",
+    "z": "3f0a5568.69490a",
+    "name": "STATUS",
+    "topic": "",
+    "payload": "STATUS",
+    "payloadType": "str",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "x": 340,
+    "y": 80,
+    "wires": [
+      [
+        "8c8f0fbe.f9a2a"
+      ]
+    ]
+  },
+  {
+    "id": "d3fa765.db44488",
+    "type": "inject",
+    "z": "3f0a5568.69490a",
+    "name": "EMPTY",
+    "topic": "",
+    "payload": "EMPTY",
+    "payloadType": "str",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "x": 327.8999824523926,
+    "y": 167.40000581741333,
+    "wires": [
+      [
+        "8c8f0fbe.f9a2a"
+      ]
+    ]
+  },
+  {
+    "id": "1e3cca2c.67f796",
+    "type": "inject",
+    "z": "3f0a5568.69490a",
+    "name": "FILL",
+    "topic": "",
+    "payload": "FILL",
+    "payloadType": "str",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "x": 329.8999824523926,
+    "y": 122.40000534057617,
+    "wires": [
+      [
+        "8c8f0fbe.f9a2a"
+      ]
+    ]
+  },
+  {
+    "id": "c70517a3.0c5888",
+    "type": "debug",
+    "z": "3f0a5568.69490a",
+    "name": "",
+    "active": false,
+    "console": "false",
+    "complete": "false",
+    "x": 570,
+    "y": 360,
+    "wires": []
+  },
+  {
+    "id": "22da3cf0.ddf8a4",
+    "type": "change",
+    "z": "3f0a5568.69490a",
+    "name": "",
+    "rules": [
+      {
+        "t": "set",
+        "p": "originalpayload",
+        "pt": "msg",
+        "to": "payload",
+        "tot": "msg"
+      },
+      {
+        "t": "set",
+        "p": "message",
+        "pt": "msg",
+        "to": "payload.Body",
+        "tot": "msg"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 580,
+    "y": 320,
+    "wires": [
+      [
+        "bc94b194.ce057"
+      ]
+    ]
+  },
+  {
+    "id": "525c9c0f.b74e04",
+    "type": "debug",
+    "z": "6ea0f481.f4e72c",
+    "name": "",
+    "active": true,
+    "console": "false",
+    "complete": "true",
+    "x": 290,
+    "y": 140,
+    "wires": []
+  },
+  {
+    "id": "bc83ffb1.4dc47",
+    "type": "http in",
+    "z": "6ea0f481.f4e72c",
+    "name": "/api/v1/porfolio",
+    "url": "/api/v1/porfolio/",
+    "method": "get",
+    "swaggerDoc": "",
+    "x": 120,
+    "y": 180,
+    "wires": [
+      [
+        "525c9c0f.b74e04",
+        "12141098.b236cf"
+      ]
+    ]
+  },
+  {
+    "id": "63a3b630.6460e8",
+    "type": "http response",
+    "z": "6ea0f481.f4e72c",
+    "name": "",
+    "x": 470,
+    "y": 180,
+    "wires": []
+  },
+  {
+    "id": "406dc551.3add8c",
+    "type": "comment",
+    "z": "6ea0f481.f4e72c",
+    "name": "http://ec2-54-245-6-218.us-west-2.compute.amazonaws.com:1880/api/v1/porfolio?element=UC&collateral=yes",
+    "info": "",
+    "x": 390,
+    "y": 100,
+    "wires": []
+  },
+  {
+    "id": "12141098.b236cf",
+    "type": "function",
+    "z": "6ea0f481.f4e72c",
+    "name": "Portfolio",
+    "func": "//msg.payload.helloText = 'Hello World!';\n\nvar portfolio = msg.payload.portfolio;\nvar collateral = msg.payload.collateral;\n\nnode.status({fill:\"green\",shape:\"ring\",text:\"Portolio activated\"});\n\n\n\nswitch (portfolio)\n{\n    case \"UC\" :\n        msg.payload.portfolio = \"\";\n        msg.payload.url1 = \"[Workspaces For Tomorrow](http://www2.dimensiondata.com/en-be/digital-business/workspaces)\";\n        msg.payload.url2 = \"[Unified communications and collaboration](http://www.dimensiondata.com/en-BE/Solutions/Unified-Communications-and-Collaboration)\";\n        if (collateral === \"yes\")\n        {\n            msg.payload.collateral = \"[Unified Communications and Collaboration Development Model](http://www.dimensiondata.com/Global/Downloadable%20Documents/Unified%20Communications%20and%20Collaboration%20Development%20Model%20Brochure.pdf)\";\n        }\n        break;\n    case \"CX\" :\n        msg.payload.portfolio = \"\";\n        msg.payload.url1 = \"[Workspaces For Tomorrow](http://www2.dimensiondata.com/en-be/digital-business/workspaces)\";\n        msg.payload.url2 = \"[Unified communications and collaboration](http://www.dimensiondata.com/en-BE/Solutions/Unified-Communications-and-Collaboration)\";\n        if (collateral === \"yes\")\n        {\n            msg.payload.collateral = \"[Unified Communications and Collaboration Development Model](http://www.dimensiondata.com/Global/Downloadable%20Documents/Unified%20Communications%20and%20Collaboration%20Development%20Model%20Brochure.pdf)\";\n        }\n        break;\n    case \"NI\" :\n        msg.payload.portfolio = \"\";\n        msg.payload.url1 = \"[Networking](http://www.dimensiondata.com/en-BE/Solutions/Networking/)\";\n        if (collateral === \"yes\")\n        {\n            msg.payload.collateral = \"[Network optimisation assessment](http://www.dimensiondata.com/Global/Downloadable%20Documents/Network%20Optimisation%20Assessment%20Brochure.pdf)\";\n        }\n        break;\n    case \"SEC\" :\n        msg.payload.portfolio = \"\";\n        msg.payload.url1 = \"[Cybersecurity](http://www2.dimensiondata.com/en-be/digital-business/cybersecurity)\";\n        if (collateral === \"yes\")\n        {\n            msg.payload.collateral = \"[Security consulting services and assessments services ](http://www.dimensiondata.com/Global/Downloadable%20Documents/Security%20Solutions%20Consulting%20Brochure.pdf)\";\n        }\n        break;\n    case \"DCS\" :\n        msg.payload.portfolio = \"\";\n        msg.payload.url1 = \"[Datacentres](http://www.dimensiondata.com/en-BE/Solutions/Data-Centres/)\";\n        if (collateral === \"yes\")\n        {\n            msg.payload.collateral = \"[Hybrid cloud](http://www.dimensiondata.com/Global/Downloadable%20Documents/Dimension%20Data%20Hybrid%20Cloud%20Solutions%20Overview.pdf)\";\n        }\n        break;\n}\n\n\nnode.info('The portfolio resquested is ' + msg.payload.portfolio + ' has collateral: ' + msg.payload.collateral);\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 300,
+    "y": 180,
+    "wires": [
+      [
+        "63a3b630.6460e8",
+        "b42b33b4.d707f"
+      ]
+    ]
+  },
+  {
+    "id": "b42b33b4.d707f",
+    "type": "debug",
+    "z": "6ea0f481.f4e72c",
+    "name": "",
+    "active": false,
+    "console": "false",
+    "complete": "false",
+    "x": 490,
+    "y": 140,
+    "wires": []
+  },
+  {
+    "id": "7465ab13.430a84",
+    "type": "function",
+    "z": "3f0a5568.69490a",
+    "name": "Demo or not",
+    "func": "node.log('The body is ' + msg.payload.Body);\nnode.warn('Message from ' + msg.payload.From + ' ==> ' + msg.payload.Body);\nif (msg.payload.From == \"+32479940612\")\n{\n    switch (msg.payload.Body){\n        case \"STATUS\":\n            node.status({fill:\"green\",shape:\"ring\",text:\"Last command was: \" + msg.payload.Body});\n            return [msg,null];\n        case \"FILL\":\n            node.status({fill:\"green\",shape:\"ring\",text:\"Last command was: \" + msg.payload.Body});\n            return [msg,null];\n        case \"EMPTY\":\n            node.status({fill:\"green\",shape:\"ring\",text:\"Last command was: \" + msg.payload.Body});\n            return [msg,null];\n        default:\n            return [null,msg];\n    }\n}\nelse\n{\n    console.error('Message received from unauthorised number: ' + msg.payload.From);\n    node.status({fill:\"red\",shape:\"ring\",text:\"Last command was unauthorised\"});\n}\n\n\nreturn msg;",
+    "outputs": "2",
+    "noerr": 0,
+    "x": 370,
+    "y": 320,
+    "wires": [
+      [
+        "22da3cf0.ddf8a4",
+        "c158adf1.2d352"
+      ],
+      [
+        "c70517a3.0c5888"
+      ]
+    ],
+    "outputLabels": [
+      "good command",
+      "wrong command"
+    ]
+  },
+  {
+    "id": "c158adf1.2d352",
+    "type": "debug",
+    "z": "3f0a5568.69490a",
+    "name": "",
+    "active": false,
+    "console": "false",
+    "complete": "true",
+    "x": 550,
+    "y": 280,
+    "wires": []
+  },
+  {
+    "id": "f1087dbe.1e1aa",
+    "type": "debug",
+    "z": "3f0a5568.69490a",
+    "name": "",
+    "active": true,
+    "console": "false",
+    "complete": "true",
+    "x": 350,
+    "y": 280,
+    "wires": []
+  },
+  {
+    "id": "8a2efd9c.e9f35",
+    "type": "http in",
+    "z": "3f0a5568.69490a",
+    "name": "/incoming",
+    "url": "/incoming",
+    "method": "get",
+    "upload": false,
+    "swaggerDoc": "",
+    "x": 180,
+    "y": 320,
+    "wires": [
+      [
+        "f1087dbe.1e1aa",
+        "6c3955d.51f1fac",
+        "7465ab13.430a84"
+      ]
+    ]
+  },
+  {
+    "id": "bc94b194.ce057",
+    "type": "json",
+    "z": "3f0a5568.69490a",
+    "name": "",
+    "pretty": false,
+    "x": 730,
+    "y": 320,
+    "wires": [
+      [
+        "71da4fd1.0f562",
+        "c745c0e9.8f52c"
+      ]
+    ]
+  },
+  {
+    "id": "6c3955d.51f1fac",
+    "type": "http response",
+    "z": "3f0a5568.69490a",
+    "name": "",
+    "statusCode": "",
+    "headers": {},
+    "x": 350,
+    "y": 360,
+    "wires": []
+  },
+  {
+    "id": "71da4fd1.0f562",
+    "type": "debug",
+    "z": "3f0a5568.69490a",
+    "name": "",
+    "active": false,
+    "console": "false",
+    "complete": "false",
+    "x": 906.0000267028809,
+    "y": 379.0000114440918,
+    "wires": []
+  },
+  {
+    "id": "4928f3bd.f7251c",
+    "type": "debug",
+    "z": "81b9956f.f67058",
+    "name": "Data",
+    "active": true,
+    "console": "false",
+    "complete": "payload",
+    "x": 810,
+    "y": 120,
+    "wires": []
+  },
+  {
+    "id": "5cb16500.bec0bc",
+    "type": "Meraki CMX",
+    "z": "81b9956f.f67058",
+    "name": "",
+    "url": "/cmx2",
+    "settings": "d290a4d9.c5e218",
+    "radioType": "All",
+    "x": 390,
+    "y": 140,
+    "wires": [
+      [
+        "4928f3bd.f7251c",
+        "a2e7a693.494d68"
+      ],
+      [
+        "23e2a106.65083e"
+      ]
+    ]
+  },
+  {
+    "id": "14a89a01.6537d6",
+    "type": "debug",
+    "z": "81b9956f.f67058",
+    "name": "Status: Data",
+    "active": true,
+    "console": "false",
+    "complete": "true",
+    "x": 790,
+    "y": 200,
+    "wires": []
+  },
+  {
+    "id": "9a1d3fbd.a819b",
+    "type": "split",
+    "z": "81b9956f.f67058",
+    "name": "",
+    "splt": "\\n",
+    "spltType": "str",
+    "arraySplt": 1,
+    "arraySpltType": "len",
+    "stream": false,
+    "addname": "topic",
+    "x": 630,
+    "y": 520,
+    "wires": [
+      [
+        "55fe6a92.75d344"
+      ]
+    ]
+  },
+  {
+    "id": "b550c852.ead578",
+    "type": "function",
+    "z": "81b9956f.f67058",
+    "name": "Extract Observations",
+    "func": "// Flatten JSON\nmsg.type = msg.payload.type;\nmsg.apMac = msg.payload.data.apMac;\nmsg.apFloors = msg.payload.data.apFloors\nmsg.apTags = msg.payload.data.apTags;\nmsg.payload = msg.payload.data.observations;\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 540,
+    "y": 480,
+    "wires": [
+      [
+        "9a1d3fbd.a819b"
+      ]
+    ]
+  },
+  {
+    "id": "55fe6a92.75d344",
+    "type": "debug",
+    "z": "81b9956f.f67058",
+    "name": "Observation",
+    "active": true,
+    "console": "false",
+    "complete": "true",
+    "x": 790,
+    "y": 520,
+    "wires": []
+  },
+  {
+    "id": "23e2a106.65083e",
+    "type": "switch",
+    "z": "81b9956f.f67058",
+    "name": "",
+    "property": "topic",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "eq",
+        "v": "data",
+        "vt": "str"
+      },
+      {
+        "t": "eq",
+        "v": "version",
+        "vt": "str"
+      },
+      {
+        "t": "eq",
+        "v": "validator",
+        "vt": "str"
+      },
+      {
+        "t": "eq",
+        "v": "secret",
+        "vt": "str"
+      },
+      {
+        "t": "eq",
+        "v": "type",
+        "vt": "str"
+      },
+      {
+        "t": "eq",
+        "v": "error",
+        "vt": "str"
+      },
+      {
+        "t": "else"
+      }
+    ],
+    "checkall": "true",
+    "outputs": 7,
+    "x": 590,
+    "y": 300,
+    "wires": [
+      [
+        "14a89a01.6537d6"
+      ],
+      [
+        "ca9acef9.f9de"
+      ],
+      [
+        "9df07e68.f0ecc"
+      ],
+      [
+        "22cf1d2d.d1b0c2"
+      ],
+      [
+        "c08b216e.63da"
+      ],
+      [
+        "55598b96.0b3d64"
+      ],
+      [
+        "c0c85a67.63da08"
+      ]
+    ]
+  },
+  {
+    "id": "9df07e68.f0ecc",
+    "type": "debug",
+    "z": "81b9956f.f67058",
+    "name": "Status: Validator",
+    "active": true,
+    "console": "false",
+    "complete": "true",
+    "x": 780,
+    "y": 280,
+    "wires": []
+  },
+  {
+    "id": "22cf1d2d.d1b0c2",
+    "type": "debug",
+    "z": "81b9956f.f67058",
+    "name": "Status: Secret",
+    "active": true,
+    "console": "false",
+    "complete": "true",
+    "x": 780,
+    "y": 320,
+    "wires": []
+  },
+  {
+    "id": "c08b216e.63da",
+    "type": "debug",
+    "z": "81b9956f.f67058",
+    "name": "Status: Type",
+    "active": true,
+    "console": "false",
+    "complete": "true",
+    "x": 790,
+    "y": 360,
+    "wires": []
+  },
+  {
+    "id": "55598b96.0b3d64",
+    "type": "debug",
+    "z": "81b9956f.f67058",
+    "name": "Status: Error",
+    "active": true,
+    "console": "false",
+    "complete": "true",
+    "x": 790,
+    "y": 400,
+    "wires": []
+  },
+  {
+    "id": "c0c85a67.63da08",
+    "type": "debug",
+    "z": "81b9956f.f67058",
+    "name": "Status: Otherwise",
+    "active": true,
+    "console": "false",
+    "complete": "true",
+    "x": 770,
+    "y": 440,
+    "wires": []
+  },
+  {
+    "id": "a2e7a693.494d68",
+    "type": "link out",
+    "z": "81b9956f.f67058",
+    "name": "Meraki Scanning",
+    "links": [
+      "40bf58ab.e6d268"
+    ],
+    "x": 575,
+    "y": 160,
+    "wires": []
+  },
+  {
+    "id": "40bf58ab.e6d268",
+    "type": "link in",
+    "z": "81b9956f.f67058",
+    "name": "Split Observations",
+    "links": [
+      "a2e7a693.494d68"
+    ],
+    "x": 360,
+    "y": 480,
+    "wires": [
+      [
+        "b550c852.ead578"
+      ]
+    ]
+  },
+  {
+    "id": "84292132.96df7",
+    "type": "comment",
+    "z": "81b9956f.f67058",
+    "name": "Workflow Examples",
+    "info": "",
+    "x": 420,
+    "y": 440,
+    "wires": []
+  },
+  {
+    "id": "ca9acef9.f9de",
+    "type": "debug",
+    "z": "81b9956f.f67058",
+    "name": "Status: Version",
+    "active": true,
+    "console": "false",
+    "complete": "true",
+    "x": 780,
+    "y": 240,
+    "wires": []
+  },
+  {
+    "id": "c3b93afb.147818",
+    "type": "comment",
+    "z": "81b9956f.f67058",
+    "name": "Meraki Scanning Node - README",
+    "info": "Update the Meraki node with your Meraki Network's\nvalidator and secret",
+    "x": 710,
+    "y": 60,
+    "wires": []
+  },
+  {
+    "id": "f8325e0b.c4434",
+    "type": "link in",
+    "z": "3f0a5568.69490a",
+    "name": "Post SMS message",
+    "links": [
+      "c745c0e9.8f52c"
+    ],
+    "x": 455,
+    "y": 160,
+    "wires": [
+      [
+        "8c8f0fbe.f9a2a"
+      ]
+    ]
+  },
+  {
+    "id": "c745c0e9.8f52c",
+    "type": "link out",
+    "z": "3f0a5568.69490a",
+    "name": "Receive SMS message",
+    "links": [
+      "f8325e0b.c4434"
+    ],
+    "x": 835,
+    "y": 320,
+    "wires": []
+  }
+]

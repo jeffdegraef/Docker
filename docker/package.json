@@ -1,36 +1,95 @@
 {
-  "name": "node-red-docker",
-  "version": "1.0.0",
-  "description": "A visual tool for wiring the Internet of Things",
-  "homepage": "http://nodered.org",
-  "license": "Apache 2.0",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/node-red/node-red-docker.git"
+  "_args": [
+    [
+      {
+        "raw": "node-red@0.17.5",
+        "scope": null,
+        "escapedName": "node-red",
+        "name": "node-red",
+        "rawSpec": "0.17.5",
+        "spec": "0.17.5",
+        "type": "version"
+      },
+      "/usr/src/node-red"
+    ]
+  ],
+  "_from": "node-red@0.17.5",
+  "_id": "node-red@0.17.5",
+  "_inCache": true,
+  "_location": "/node-red",
+  "_nodeVersion": "4.7.2",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/node-red-0.17.5.tgz_1500828157317_0.5355983932968229"
   },
-  "main": "node_modules/node-red/red/red.js",
-  "scripts": {
-    "start": "node $NODE_OPTIONS node_modules/node-red/red.js -v $FLOWS"
+  "_npmUser": {
+    "name": "knolleary",
+    "email": "nick.oleary@gmail.com"
+  },
+  "_npmVersion": "2.15.11",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "node-red@0.17.5",
+    "scope": null,
+    "escapedName": "node-red",
+    "name": "node-red",
+    "rawSpec": "0.17.5",
+    "spec": "0.17.5",
+    "type": "version"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/node-red/-/node-red-0.17.5.tgz",
+  "_shasum": "1dcf3ead7902ce2df615cdfbe19f3cd9a50e28e2",
+  "_shrinkwrap": null,
+  "_spec": "node-red@0.17.5",
+  "_where": "/usr/src/node-red",
+  "bin": {
+    "node-red": "./red.js",
+    "node-red-pi": "bin/node-red-pi"
+  },
+  "bugs": {
+    "url": "https://github.com/node-red/node-red/issues"
   },
   "contributors": [
-    {
-      "name": "Dave Conway-Jones"
-    },
     {
       "name": "Nick O'Leary"
     },
     {
-      "name": "James Thomas"
+      "name": "Dave Conway-Jones"
     }
   ],
   "dependencies": {
-    "node-red": "0.17.5",
-    "node-red-node-msgpack": "*",
-    "node-red-node-base64": "*",
-    "node-red-node-suncalc": "*",
-    "node-red-node-random": "*",
+    "basic-auth": "1.1.0",
+    "bcrypt": "~1.0.1",
+    "bcryptjs": "2.4.3",
+    "body-parser": "1.17.2",
+    "cheerio": "0.22.0",
+    "clone": "2.1.1",
+    "cookie": "0.3.1",
+    "cookie-parser": "1.4.3",
+    "cors": "2.8.3",
+    "cron": "1.2.1",
+    "express": "4.15.3",
+    "express-session": "1.15.2",
+    "follow-redirects": "1.2.4",
+    "fs-extra": "1.0.0",
+    "fs.notify": "0.0.4",
+    "hash-sum": "1.0.2",
+    "i18next": "1.10.6",
+    "is-utf8": "0.2.1",
+    "js-yaml": "3.8.4",
+    "json-stringify-safe": "5.0.1",
+    "jsonata": "1.2.6",
+    "media-typer": "0.3.0",
+    "mqtt": "2.9.0",
+    "multer": "1.3.0",
+    "mustache": "2.3.0",
+    "node-red-contrib-ale-rainbow": "^1.2.0",
     "node-red-contrib-apiai": "^1.1.2",
     "node-red-contrib-asterisk": "0.0.3",
+    "node-red-contrib-chatbot": "^0.9.10",
     "node-red-contrib-dns": "0.0.4",
     "node-red-contrib-excel": "0.0.3",
     "node-red-contrib-ftp": "0.0.2",
@@ -40,17 +99,93 @@
     "node-red-contrib-mongodb2": "^0.5.6",
     "node-red-contrib-slackbot": "^1.0.3",
     "node-red-contrib-spark": "^2.0.5",
-    "node-red-node-google": "^0.1.1",
+    "node-red-contrib-web-worldmap": "^1.1.9",
+    "node-red-node-base64": "0.0.8",
+    "node-red-node-email": "^0.1.24",
+    "node-red-node-feedparser": "0.1.*",
+    "node-red-node-google": "^0.1.3",
     "node-red-node-mongodb": "0.0.13",
+    "node-red-node-msgpack": "^1.0.1",
+    "node-red-node-random": "0.0.8",
+    "node-red-node-rbe": "0.1.*",
+    "node-red-node-suncalc": "0.0.10",
     "node-red-node-swagger": "^0.1.8",
-    "node-red-node-twilio": "0.0.14",
-    "node-red-contrib-ale-rainbow": "*",
-    "node-red-node-email": "*",
-    "node-red-contrib-chatbot": "*",
-    "node-red-contrib-web-worldmap": "*"
+    "node-red-node-twilio": "0.0.15",
+    "node-red-node-twitter": "0.1.*",
+    "nopt": "3.0.6",
+    "oauth2orize": "1.8.0",
+    "on-headers": "1.0.1",
+    "passport": "0.3.2",
+    "passport-http-bearer": "1.0.1",
+    "passport-oauth2-client-password": "0.1.2",
+    "raw-body": "2.2.0",
+    "semver": "5.3.0",
+    "sentiment": "2.1.0",
+    "uglify-js": "3.0.20",
+    "when": "3.7.8",
+    "ws": "1.1.1",
+    "xml2js": "0.4.17"
+  },
+  "description": "A visual tool for wiring the Internet of Things",
+  "devDependencies": {
+    "grunt": "~1.0.1",
+    "grunt-chmod": "~1.1.1",
+    "grunt-cli": "~1.2.0",
+    "grunt-concurrent": "~2.3.1",
+    "grunt-contrib-clean": "~1.1.0",
+    "grunt-contrib-compress": "~1.4.0",
+    "grunt-contrib-concat": "~1.0.1",
+    "grunt-contrib-copy": "~1.0.0",
+    "grunt-contrib-jshint": "~1.1.0",
+    "grunt-contrib-uglify": "~3.0.1",
+    "grunt-contrib-watch": "~1.0.0",
+    "grunt-jsonlint": "~1.1.0",
+    "grunt-mocha-istanbul": "5.0.2",
+    "grunt-nodemon": "~0.4.2",
+    "grunt-sass": "~1.2.1",
+    "grunt-simple-mocha": "~0.4.1",
+    "istanbul": "0.4.5",
+    "mocha": "~3.4.2",
+    "should": "^8.4.0",
+    "sinon": "1.17.7",
+    "supertest": "3.0.0"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "1dcf3ead7902ce2df615cdfbe19f3cd9a50e28e2",
+    "tarball": "https://registry.npmjs.org/node-red/-/node-red-0.17.5.tgz"
   },
   "engines": {
-    "node": "4.*.*"
-  }
+    "node": ">=4"
+  },
+  "homepage": "http://nodered.org",
+  "keywords": [
+    "editor",
+    "messaging",
+    "iot",
+    "flow"
+  ],
+  "license": "Apache-2.0",
+  "main": "red/red.js",
+  "maintainers": [
+    {
+      "name": "knolleary",
+      "email": "nick.oleary@gmail.com"
+    }
+  ],
+  "name": "node-red",
+  "optionalDependencies": {
+    "bcrypt": "~1.0.1"
+  },
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/node-red/node-red.git"
+  },
+  "scripts": {
+    "build": "grunt build",
+    "start": "node red.js",
+    "test": "grunt"
+  },
+  "version": "0.17.5"
 }
-

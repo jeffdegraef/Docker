@@ -1,3 +1,4 @@
+#FROM resin/rpi-raspbian:latest
 FROM nodered/node-red-docker
  USER root
  RUN apt-get update
@@ -15,4 +16,8 @@ FROM nodered/node-red-docker
  WORKDIR $HOME/.node-red
  COPY package.json $HOME/.node-red/package.json
  COPY flows.json $HOME/.node-red/flows.json
- RUN npm install
+ # COPY Logo-DimensionData.png $HOME/.node-red/Logo-DimensionData.png
+ # COPY settings.js $HOME/.node-red/node_modules/node-red/settings.js
+ # RUN npm install
+ # COPY flows.json $HOME/.node-red/flows_rpi.json
+ CMD [ "npm", "start" ]

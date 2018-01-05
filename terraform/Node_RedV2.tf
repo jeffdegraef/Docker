@@ -1,12 +1,12 @@
 provider "aws" {
-  access_key = ""
-  secret_key = ""
-  region     = "us-west-2"
+  access_key  = "${var.access_key}"
+  secret_key  = "${var.secret_key}"
+  region      = "${var.region}"
 }
 
 resource "aws_key_pair" "deployer" {
-  key_name = "deployer-key"
-  public_key = ""
+  key_name   = "${var.key_name}"
+  public_key = "${file(var.public_key_path)}"
 }
 
 resource "aws_security_group" "terraform" {
@@ -86,12 +86,13 @@ resource "aws_security_group" "terraform" {
 resource "aws_instance" "example" {
   ami           = "ami-efd0428f"
   instance_type = "t2.micro"
+  # The name of our SSH keypair we created above.
   key_name = "${aws_key_pair.deployer.id}"
 
   user_data = "${data.template_file.user_data_shell.rendered}"
 
   tags {
-    Name = "Terraform Dicker Node-Red Server"
+    Name = "Terraform Docker Server"
   }
 
 

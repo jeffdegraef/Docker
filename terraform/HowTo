@@ -1,0 +1,6 @@
+Convert a AWS PEM into a ssh pub key
+ssh-keygen -y -f oregon-key-pair.pem > oregon-key-pair.pub
+
+terraform apply -var 'key_name=oregon-key-pair' -var 'public_key_path=/home/ubuntu/.ssh/oregon-key-pair.pub'
+chmod 400 ~/.ssh/oregon-key-pair.pub
+chmod 400 ~/.ssh/oregon-key-pair.pem
