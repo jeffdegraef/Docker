@@ -3,7 +3,7 @@ FROM nodered/node-red-docker
  USER root
  RUN apt-get update
  RUN apt-get install python-pip libpq-dev build-essential python-dev git libxml2 libxml2-dev libxslt1-dev libtiff5-dev libjpeg62-turbo-dev zlib1g-dev libfreetype6-dev liblcms2-dev libwebp-dev tcl8.6-dev tk8.6-dev python-tk -y
- RUN curl -sL https://deb.nodesource.com/setup_4.x | bash -
+ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
  RUN apt-get install -y nodejs build-essential -y
  RUN apt-get update && apt-get upgrade -y
  # build Node-red modules
