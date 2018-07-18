@@ -21,6 +21,28 @@
     "info": ""
   },
   {
+    "id": "188e41b6.f85b4e",
+    "type": "tab",
+    "label": "Flow 1"
+  },
+  {
+    "id": "e99c8672.798798",
+    "type": "tab",
+    "label": "Flow 2"
+  },
+  {
+    "id": "e11321ef.43f14",
+    "type": "tab",
+    "label": "Meraki Node MongoDB2",
+    "disabled": false,
+    "info": ""
+  },
+  {
+    "id": "a47538b6.223c38",
+    "type": "tab",
+    "label": "Flow 3"
+  },
+  {
     "id": "3df507d3.ec71b8",
     "type": "mqtt-broker",
     "z": "",
@@ -43,6 +65,308 @@
     "type": "meraki-cmx-settings",
     "z": "",
     "name": "DD Meraki"
+  },
+  {
+    "id": "499d10a6.af1cd",
+    "type": "Spark Authentication",
+    "z": "",
+    "name": "lab bot"
+  },
+  {
+    "id": "5191f3d1.e77a1c",
+    "type": "meraki-cmx-settings",
+    "z": "e99c8672.798798",
+    "name": "Meraki CMX"
+  },
+  {
+    "id": "b36066ab.ebbfc8",
+    "type": "Spark Authentication",
+    "z": "e99c8672.798798",
+    "name": "CMX Bot"
+  },
+  {
+    "id": "e48a7d34.f0723",
+    "type": "mongodb2",
+    "z": "e11321ef.43f14",
+    "uri": "mongodb://127.0.0.1:27017/merakidb",
+    "name": "merakidb",
+    "options": "",
+    "parallelism": "-1"
+  },
+  {
+    "id": "5dca8aba.41f424",
+    "type": "ui_base",
+    "theme": {
+      "name": "theme-light",
+      "lightTheme": {
+        "default": "#0094CE",
+        "baseColor": "#00ff40",
+        "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+        "edited": true,
+        "reset": false
+      },
+      "darkTheme": {
+        "default": "#097479",
+        "baseColor": "#097479",
+        "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+        "edited": false
+      },
+      "customTheme": {
+        "default": "#4B7930",
+        "baseColor": "#0094CE",
+        "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+      },
+      "themeState": {
+        "base-color": {
+          "default": "#0094CE",
+          "value": "#0094CE",
+          "edited": false
+        },
+        "page-titlebar-backgroundColor": {
+          "value": "#00ff40",
+          "edited": false
+        },
+        "page-backgroundColor": {
+          "value": "#fafafa",
+          "edited": false
+        },
+        "page-sidebar-backgroundColor": {
+          "value": "#ffffff",
+          "edited": false
+        },
+        "group-textColor": {
+          "value": "#4dff79",
+          "edited": false
+        },
+        "group-borderColor": {
+          "value": "#ffffff",
+          "edited": false
+        },
+        "group-backgroundColor": {
+          "value": "#ffffff",
+          "edited": false
+        },
+        "widget-textColor": {
+          "value": "#111111",
+          "edited": false
+        },
+        "widget-backgroundColor": {
+          "value": "#00ff40",
+          "edited": false
+        },
+        "widget-borderColor": {
+          "value": "#ffffff",
+          "edited": false
+        },
+        "base-font": {
+          "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+        }
+      }
+    },
+    "site": {
+      "name": "Node-RED Dashboard",
+      "hideToolbar": "false",
+      "allowSwipe": "false",
+      "dateFormat": "DD/MM/YYYY",
+      "sizes": {
+        "sx": 48,
+        "sy": 48,
+        "gx": 6,
+        "gy": 6,
+        "cx": 6,
+        "cy": 6,
+        "px": 0,
+        "py": 0
+      }
+    }
+  },
+  {
+    "id": "6a5caafc.11e8f4",
+    "type": "ui_tab",
+    "name": "Tab 1",
+    "icon": "dashboard",
+    "order": 1
+  },
+  {
+    "id": "7e0a4cee.f2c764",
+    "type": "ui_group",
+    "z": "",
+    "name": "Group 1",
+    "tab": "6a5caafc.11e8f4",
+    "order": 1,
+    "disp": true,
+    "width": "6"
+  },
+  {
+    "id": "d02b0e31.6736c",
+    "type": "mongodb",
+    "z": "",
+    "hostname": "jennyt.myds.me",
+    "port": "27017",
+    "db": "meraki_db",
+    "name": "MongoDB raspi"
+  },
+  {
+    "id": "8f742f94.7b2e5",
+    "type": "mongodb",
+    "z": "",
+    "hostname": "172.17.0.1",
+    "port": "27017",
+    "db": "meraki_db",
+    "name": "mongodb docker host"
+  },
+  {
+    "id": "f9fa0a7c.81b4e8",
+    "type": "websocket-listener",
+    "z": "",
+    "path": "/api/v1/usermap",
+    "wholemsg": "false"
+  },
+  {
+    "id": "ad560c28.09535",
+    "type": "mongodb2",
+    "z": "",
+    "uri": "mongodb://172.17.0.1:27017/meraki_db",
+    "name": "mongodb docker host",
+    "options": "",
+    "parallelism": "-1"
+  },
+  {
+    "id": "8af76f80.7c6ff",
+    "type": "meraki-cmx-settings",
+    "z": "",
+    "name": "INFOSEC"
+  },
+  {
+    "id": "215c8398.a69ccc",
+    "type": "mqtt-broker",
+    "z": "",
+    "broker": "localhost",
+    "port": "1883",
+    "clientid": "",
+    "usetls": false,
+    "compatmode": true,
+    "keepalive": "60",
+    "cleansession": true,
+    "willTopic": "",
+    "willQos": "0",
+    "willPayload": "",
+    "birthTopic": "",
+    "birthQos": "0",
+    "birthPayload": ""
+  },
+  {
+    "id": "6018ee91.a7989",
+    "type": "ui_group",
+    "z": "",
+    "name": "Sleeping Room",
+    "tab": "e1dd7739.beac48",
+    "order": 1,
+    "disp": true,
+    "width": "6"
+  },
+  {
+    "id": "e1dd7739.beac48",
+    "type": "ui_tab",
+    "z": "",
+    "name": "Lights",
+    "icon": "dashboard",
+    "order": 3
+  },
+  {
+    "id": "2e16ce29.e93182",
+    "type": "ui_group",
+    "z": "",
+    "name": "Outside",
+    "tab": "d9b5c72b.ac7a98",
+    "order": 1,
+    "disp": true,
+    "width": "7"
+  },
+  {
+    "id": "80e74793.a33ad8",
+    "type": "mqtt-broker",
+    "z": "",
+    "broker": "localhost",
+    "port": "1883",
+    "clientid": "",
+    "usetls": false,
+    "compatmode": true,
+    "keepalive": "60",
+    "cleansession": true,
+    "willTopic": "",
+    "willQos": "0",
+    "willPayload": "",
+    "birthTopic": "",
+    "birthQos": "0",
+    "birthPayload": ""
+  },
+  {
+    "id": "26a51e59.58bc22",
+    "type": "ui_group",
+    "z": "",
+    "name": "Bathroom",
+    "tab": "d9b5c72b.ac7a98",
+    "order": 2,
+    "disp": true,
+    "width": "6"
+  },
+  {
+    "id": "d9b5c72b.ac7a98",
+    "type": "ui_tab",
+    "z": "",
+    "name": "Climate",
+    "icon": "dashboard",
+    "order": 1
+  },
+  {
+    "id": "fb34ff1.42da2",
+    "type": "ui_group",
+    "z": "",
+    "name": "Washing Machine",
+    "tab": "a19d30bd.e3aff",
+    "order": 2,
+    "disp": true,
+    "width": "6"
+  },
+  {
+    "id": "12b7800c.02e78",
+    "type": "mqtt-broker",
+    "z": "",
+    "broker": "localhost",
+    "port": "1883",
+    "clientid": "",
+    "usetls": false,
+    "compatmode": true,
+    "keepalive": "60",
+    "cleansession": true,
+    "willTopic": "",
+    "willQos": "0",
+    "willPayload": "",
+    "birthTopic": "",
+    "birthQos": "0",
+    "birthPayload": ""
+  },
+  {
+    "id": "a19d30bd.e3aff",
+    "type": "ui_tab",
+    "z": "",
+    "name": "Washing Machine",
+    "icon": "dashboard",
+    "order": 2
+  },
+  {
+    "id": "80c1e140.375d3",
+    "type": "swagger-doc",
+    "z": "",
+    "summary": "",
+    "description": "",
+    "tags": "",
+    "consumes": "",
+    "produces": "",
+    "parameters": [],
+    "responses": {},
+    "deprecated": false
   },
   {
     "id": "8c8f0fbe.f9a2a",
@@ -179,6 +503,7 @@
     "name": "/api/v1/porfolio",
     "url": "/api/v1/porfolio/",
     "method": "get",
+    "upload": false,
     "swaggerDoc": "",
     "x": 120,
     "y": 180,
@@ -278,7 +603,7 @@
     "type": "debug",
     "z": "3f0a5568.69490a",
     "name": "",
-    "active": true,
+    "active": false,
     "console": "false",
     "complete": "true",
     "x": 350,
@@ -338,8 +663,8 @@
     "active": false,
     "console": "false",
     "complete": "false",
-    "x": 906.0000267028809,
-    "y": 379.0000114440918,
+    "x": 750,
+    "y": 360,
     "wires": []
   },
   {
@@ -347,11 +672,11 @@
     "type": "debug",
     "z": "81b9956f.f67058",
     "name": "Data",
-    "active": true,
+    "active": false,
     "console": "false",
     "complete": "payload",
-    "x": 810,
-    "y": 120,
+    "x": 310,
+    "y": 60,
     "wires": []
   },
   {
@@ -362,8 +687,8 @@
     "url": "/cmx2",
     "settings": "d290a4d9.c5e218",
     "radioType": "All",
-    "x": 390,
-    "y": 140,
+    "x": 170,
+    "y": 120,
     "wires": [
       [
         "4928f3bd.f7251c",
@@ -379,11 +704,11 @@
     "type": "debug",
     "z": "81b9956f.f67058",
     "name": "Status: Data",
-    "active": true,
+    "active": false,
     "console": "false",
     "complete": "true",
-    "x": 790,
-    "y": 200,
+    "x": 590,
+    "y": 100,
     "wires": []
   },
   {
@@ -397,11 +722,12 @@
     "arraySpltType": "len",
     "stream": false,
     "addname": "topic",
-    "x": 630,
+    "x": 610,
     "y": 520,
     "wires": [
       [
-        "55fe6a92.75d344"
+        "14a55855.b13a98",
+        "5d220258.87fc5c"
       ]
     ]
   },
@@ -413,25 +739,14 @@
     "func": "// Flatten JSON\nmsg.type = msg.payload.type;\nmsg.apMac = msg.payload.data.apMac;\nmsg.apFloors = msg.payload.data.apFloors\nmsg.apTags = msg.payload.data.apTags;\nmsg.payload = msg.payload.data.observations;\n\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
-    "x": 540,
-    "y": 480,
+    "x": 400,
+    "y": 520,
     "wires": [
       [
-        "9a1d3fbd.a819b"
+        "9a1d3fbd.a819b",
+        "425489f1.02e878"
       ]
     ]
-  },
-  {
-    "id": "55fe6a92.75d344",
-    "type": "debug",
-    "z": "81b9956f.f67058",
-    "name": "Observation",
-    "active": true,
-    "console": "false",
-    "complete": "true",
-    "x": 790,
-    "y": 520,
-    "wires": []
   },
   {
     "id": "23e2a106.65083e",
@@ -477,8 +792,8 @@
     ],
     "checkall": "true",
     "outputs": 7,
-    "x": 590,
-    "y": 300,
+    "x": 370,
+    "y": 200,
     "wires": [
       [
         "14a89a01.6537d6"
@@ -508,11 +823,11 @@
     "type": "debug",
     "z": "81b9956f.f67058",
     "name": "Status: Validator",
-    "active": true,
+    "active": false,
     "console": "false",
     "complete": "true",
-    "x": 780,
-    "y": 280,
+    "x": 600,
+    "y": 180,
     "wires": []
   },
   {
@@ -520,11 +835,11 @@
     "type": "debug",
     "z": "81b9956f.f67058",
     "name": "Status: Secret",
-    "active": true,
+    "active": false,
     "console": "false",
     "complete": "true",
-    "x": 780,
-    "y": 320,
+    "x": 600,
+    "y": 220,
     "wires": []
   },
   {
@@ -532,11 +847,11 @@
     "type": "debug",
     "z": "81b9956f.f67058",
     "name": "Status: Type",
-    "active": true,
+    "active": false,
     "console": "false",
     "complete": "true",
-    "x": 790,
-    "y": 360,
+    "x": 590,
+    "y": 260,
     "wires": []
   },
   {
@@ -544,11 +859,11 @@
     "type": "debug",
     "z": "81b9956f.f67058",
     "name": "Status: Error",
-    "active": true,
+    "active": false,
     "console": "false",
     "complete": "true",
-    "x": 790,
-    "y": 400,
+    "x": 590,
+    "y": 300,
     "wires": []
   },
   {
@@ -556,11 +871,11 @@
     "type": "debug",
     "z": "81b9956f.f67058",
     "name": "Status: Otherwise",
-    "active": true,
+    "active": false,
     "console": "false",
     "complete": "true",
-    "x": 770,
-    "y": 440,
+    "x": 610,
+    "y": 340,
     "wires": []
   },
   {
@@ -571,8 +886,8 @@
     "links": [
       "40bf58ab.e6d268"
     ],
-    "x": 575,
-    "y": 160,
+    "x": 335,
+    "y": 120,
     "wires": []
   },
   {
@@ -583,8 +898,8 @@
     "links": [
       "a2e7a693.494d68"
     ],
-    "x": 360,
-    "y": 480,
+    "x": 215,
+    "y": 520,
     "wires": [
       [
         "b550c852.ead578"
@@ -595,9 +910,9 @@
     "id": "84292132.96df7",
     "type": "comment",
     "z": "81b9956f.f67058",
-    "name": "Workflow Examples",
+    "name": "Parse Meraki Updates and Store in MongoDB",
     "info": "",
-    "x": 420,
+    "x": 370,
     "y": 440,
     "wires": []
   },
@@ -606,11 +921,11 @@
     "type": "debug",
     "z": "81b9956f.f67058",
     "name": "Status: Version",
-    "active": true,
+    "active": false,
     "console": "false",
     "complete": "true",
-    "x": 780,
-    "y": 240,
+    "x": 600,
+    "y": 140,
     "wires": []
   },
   {
@@ -619,8 +934,8 @@
     "z": "81b9956f.f67058",
     "name": "Meraki Scanning Node - README",
     "info": "Update the Meraki node with your Meraki Network's\nvalidator and secret",
-    "x": 710,
-    "y": 60,
+    "x": 240,
+    "y": 20,
     "wires": []
   },
   {
@@ -649,6 +964,2870 @@
     ],
     "x": 835,
     "y": 320,
+    "wires": []
+  },
+  {
+    "id": "ac7ad37b.3e11a",
+    "type": "Spark Webhook",
+    "z": "188e41b6.f85b4e",
+    "profileConfig": "499d10a6.af1cd",
+    "resource": "messages",
+    "event": "created",
+    "host": "http://[URL from Lab Spark room]",
+    "name": "",
+    "x": 200,
+    "y": 123,
+    "wires": [
+      [
+        "d1220d2d.182fb",
+        "52b62d6e.d21ed4"
+      ]
+    ]
+  },
+  {
+    "id": "52b62d6e.d21ed4",
+    "type": "Spark Payload Parser",
+    "z": "188e41b6.f85b4e",
+    "name": "",
+    "parsers": [
+      {
+        "key": "id",
+        "as": "messageId"
+      }
+    ],
+    "x": 489.4732437133789,
+    "y": 123.26532173156738,
+    "wires": [
+      [
+        "85a59bed.98b378",
+        "b7fdb26e.169df"
+      ]
+    ]
+  },
+  {
+    "id": "b7fdb26e.169df",
+    "type": "Spark API",
+    "z": "188e41b6.f85b4e",
+    "profileConfig": "499d10a6.af1cd",
+    "apiUrl": "http://54.191.231.29:59001/api/cisco_spark_v1.json",
+    "resource": "Messages",
+    "method": "getMessage",
+    "name": "",
+    "x": 771.2424011230469,
+    "y": 177.28094005584717,
+    "wires": [
+      [
+        "285a8327.2fc8ac",
+        "c252f15f.8e238"
+      ]
+    ]
+  },
+  {
+    "id": "d1220d2d.182fb",
+    "type": "debug",
+    "z": "188e41b6.f85b4e",
+    "name": "incoming webhook",
+    "active": true,
+    "console": "false",
+    "complete": "payload",
+    "x": 454.6271667480469,
+    "y": 176.65805053710938,
+    "wires": []
+  },
+  {
+    "id": "85a59bed.98b378",
+    "type": "debug",
+    "z": "188e41b6.f85b4e",
+    "name": "parser output",
+    "active": true,
+    "console": "false",
+    "complete": "payload",
+    "x": 722.4579620361328,
+    "y": 123.33833837509155,
+    "wires": []
+  },
+  {
+    "id": "285a8327.2fc8ac",
+    "type": "debug",
+    "z": "188e41b6.f85b4e",
+    "name": "message text",
+    "active": true,
+    "console": "false",
+    "complete": "payload",
+    "x": 1047.2271347045898,
+    "y": 177.95370292663574,
+    "wires": []
+  },
+  {
+    "id": "781ebc9c.79f854",
+    "type": "debug",
+    "z": "188e41b6.f85b4e",
+    "name": "match",
+    "active": true,
+    "console": "false",
+    "complete": "payload",
+    "x": 550.1118659973145,
+    "y": 353.03070878982544,
+    "wires": []
+  },
+  {
+    "id": "e215dcb.dfd062",
+    "type": "debug",
+    "z": "188e41b6.f85b4e",
+    "name": "no match",
+    "active": true,
+    "console": "false",
+    "complete": "payload",
+    "x": 561.701587677002,
+    "y": 509.0948905944824,
+    "wires": []
+  },
+  {
+    "id": "c252f15f.8e238",
+    "type": "switch",
+    "z": "188e41b6.f85b4e",
+    "name": "match & route commands",
+    "property": "payload.text",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "cont",
+        "v": "get inventory",
+        "vt": "str"
+      },
+      {
+        "t": "cont",
+        "v": "get wifi",
+        "vt": "str"
+      },
+      {
+        "t": "else"
+      }
+    ],
+    "checkall": "true",
+    "outputs": 3,
+    "x": 345.12705993652344,
+    "y": 419.4699869155884,
+    "wires": [
+      [
+        "caeddbe4.3b2df8"
+      ],
+      [
+        "781ebc9c.79f854",
+        "9a4f1dab.ff0fe"
+      ],
+      [
+        "e215dcb.dfd062"
+      ]
+    ]
+  },
+  {
+    "id": "caeddbe4.3b2df8",
+    "type": "function",
+    "z": "188e41b6.f85b4e",
+    "name": "Build Dashboard API headers",
+    "func": "// This function creates HTTP GET parameters\n// for sending to the Meraki Dashboard\napi_key = '[your dashboard api key]';\ndashboard_header = {\n        'x-cisco-meraki-api-key': api_key,\n        'Content-Type': 'application/json'\n};\n\nbot_cmd = msg.payload.text;\nmsg.headers = dashboard_header;\nmsg.roomId = msg.payload.roomId;\nreturn msg;\n",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 650.2654266357422,
+    "y": 406.66108798980713,
+    "wires": [
+      [
+        "5fb6f022.65216",
+        "c06971ba.41485"
+      ]
+    ]
+  },
+  {
+    "id": "5f2aba5c.e69e04",
+    "type": "function",
+    "z": "188e41b6.f85b4e",
+    "name": "parse and format response",
+    "func": "// This function parses the Meraki Dashboard API response\n// and creates a message to POST to a Spark room.\nresponse = msg.payload;\nbody = {}; //reset payload object for clarity\nmy_array = [];\ncounter = 0;\nbody.roomId = msg.roomId;\n\nfor (var key in response) {\n  if (response.hasOwnProperty(key)) {\n    counter += 1;\n    var dev_mac = response[key].mac;\n    var dev_serial = response[key].serial;\n    var dev_model = response[key].model;\n    my_array.push('`'+counter+\". model: \"+dev_model+\", serial: \"+dev_serial+ \", mac:\"+dev_mac+'`\\n');\n  }\n}\n\nvar msg_markdown = my_array.join(\"\\n\");\nbody.markdown = msg_markdown;\nmsg.payload = {};\nmsg.payload.body = body;\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 1324.1954727172852,
+    "y": 406.52389669418335,
+    "wires": [
+      [
+        "328f8f6d.edcd",
+        "7c763608.871378"
+      ]
+    ]
+  },
+  {
+    "id": "5fb6f022.65216",
+    "type": "http request",
+    "z": "188e41b6.f85b4e",
+    "name": "GET /organizations/[org_id]/inventory",
+    "method": "GET",
+    "ret": "obj",
+    "url": "https://dashboard.meraki.com/api/v0/organizations/650207196201616360/inventory",
+    "tls": "",
+    "x": 1005.6056747436523,
+    "y": 407.0587558746338,
+    "wires": [
+      [
+        "5f2aba5c.e69e04",
+        "7a10ac44.8ca064"
+      ]
+    ]
+  },
+  {
+    "id": "b6148d24.4b11d",
+    "type": "http request",
+    "z": "188e41b6.f85b4e",
+    "name": "GET /networks/[net_id]/ssids/0",
+    "method": "GET",
+    "ret": "obj",
+    "url": "https://dashboard.meraki.com/api/v0/networks/[networkId]/ssids/0",
+    "tls": "",
+    "x": 987.5702590942383,
+    "y": 450.52628326416016,
+    "wires": [
+      [
+        "7d2ea79.cd1f158",
+        "afd1792c.8891e8"
+      ]
+    ]
+  },
+  {
+    "id": "328f8f6d.edcd",
+    "type": "debug",
+    "z": "188e41b6.f85b4e",
+    "name": "POST response",
+    "active": true,
+    "console": "false",
+    "complete": "payload",
+    "x": 1565.6379585266113,
+    "y": 359.8671979904175,
+    "wires": []
+  },
+  {
+    "id": "7c763608.871378",
+    "type": "Spark API",
+    "z": "188e41b6.f85b4e",
+    "profileConfig": "499d10a6.af1cd",
+    "apiUrl": "http://54.191.231.29:59001/api/cisco_spark_v1.json",
+    "resource": "Messages",
+    "method": "createMessage",
+    "name": "",
+    "x": 1648.8432006835938,
+    "y": 427.3965358734131,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "ab54a4cd.817d28",
+    "type": "debug",
+    "z": "188e41b6.f85b4e",
+    "name": "POST response",
+    "active": true,
+    "console": "false",
+    "complete": "payload",
+    "x": 1555.6379051208496,
+    "y": 492.36719131469727,
+    "wires": []
+  },
+  {
+    "id": "7d2ea79.cd1f158",
+    "type": "function",
+    "z": "188e41b6.f85b4e",
+    "name": "parse and format response",
+    "func": "// This function parses the Meraki Dashboard API response\n// and creates a message to POST to a Spark room.\nresponse = msg.payload;\nbody = {}; //reset payload object for clarity\nbody.roomId = msg.roomId;\n\nfor (var key in response) {\n  if (response.hasOwnProperty(key)) {\n    if (response[key].number == 0) {\n      ssid_name = response[key].name;\n      ssid_psk = response[key].psk;\n    }\n }\n}\n\nbody.markdown = \"Guest WiFi Name `\"+ssid_name+\"` Password `\"+ssid_psk+\"`\";\nmsg.headers = '';\nmsg.payload = {};\nmsg.payload.body = body;\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 1322.3045806884766,
+    "y": 450.86717987060547,
+    "wires": [
+      [
+        "ab54a4cd.817d28",
+        "7c763608.871378"
+      ]
+    ]
+  },
+  {
+    "id": "9a4f1dab.ff0fe",
+    "type": "function",
+    "z": "188e41b6.f85b4e",
+    "name": "Build Dashboard API headers",
+    "func": "// This function creates HTTP GET parameters\n// for sending to the Meraki Dashboard\napi_key = '[your dashboard api key]';\ndashboard_header = {\n        'x-cisco-meraki-api-key': api_key,\n        'Content-Type': 'application/json'\n};\n\nbot_cmd = msg.payload.text;\nmsg.headers = dashboard_header;\nmsg.roomId = msg.payload.roomId;\nreturn msg;\n",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 652.3045883178711,
+    "y": 450.7004985809326,
+    "wires": [
+      [
+        "b6148d24.4b11d",
+        "f7466899.1596d8"
+      ]
+    ]
+  },
+  {
+    "id": "7a10ac44.8ca064",
+    "type": "debug",
+    "z": "188e41b6.f85b4e",
+    "name": "Dashboard response",
+    "active": true,
+    "console": "false",
+    "complete": "payload",
+    "x": 1259.804573059082,
+    "y": 344.0338191986084,
+    "wires": []
+  },
+  {
+    "id": "c06971ba.41485",
+    "type": "debug",
+    "z": "188e41b6.f85b4e",
+    "name": "Dashboard GET params",
+    "active": true,
+    "console": "false",
+    "complete": "payload",
+    "x": 956.4712600708008,
+    "y": 342.3671627044678,
+    "wires": []
+  },
+  {
+    "id": "f7466899.1596d8",
+    "type": "debug",
+    "z": "188e41b6.f85b4e",
+    "name": "Dashboard GET params",
+    "active": true,
+    "console": "false",
+    "complete": "payload",
+    "x": 919.804573059082,
+    "y": 552.3671321868896,
+    "wires": []
+  },
+  {
+    "id": "afd1792c.8891e8",
+    "type": "debug",
+    "z": "188e41b6.f85b4e",
+    "name": "Dashboard response",
+    "active": true,
+    "console": "false",
+    "complete": "payload",
+    "x": 1214.804573059082,
+    "y": 538.200475692749,
+    "wires": []
+  },
+  {
+    "id": "c6431bba.1b0468",
+    "type": "debug",
+    "z": "e99c8672.798798",
+    "name": "No match",
+    "active": false,
+    "console": "false",
+    "complete": "true",
+    "x": 561.75,
+    "y": 262,
+    "wires": []
+  },
+  {
+    "id": "ad8b4f03.b846f",
+    "type": "debug",
+    "z": "e99c8672.798798",
+    "name": "Raw CMX debug",
+    "active": false,
+    "console": "false",
+    "complete": "true",
+    "x": 183.75,
+    "y": 190,
+    "wires": []
+  },
+  {
+    "id": "365def90.a9e52",
+    "type": "file",
+    "z": "e99c8672.798798",
+    "name": "logs/cmx.log",
+    "filename": "logs/cmx.log",
+    "appendNewline": true,
+    "createDir": false,
+    "overwriteFile": "false",
+    "x": 1030,
+    "y": 160,
+    "wires": []
+  },
+  {
+    "id": "c0ac9386.1323e",
+    "type": "debug",
+    "z": "e99c8672.798798",
+    "name": "Spark POST debug",
+    "active": true,
+    "console": "false",
+    "complete": "true",
+    "x": 1382.75,
+    "y": 193,
+    "wires": []
+  },
+  {
+    "id": "1349cae4.696c25",
+    "type": "switch",
+    "z": "e99c8672.798798",
+    "name": "MAC address match",
+    "property": "payload",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "cont",
+        "v": "de:ad:00:00:be:ef",
+        "vt": "str"
+      },
+      {
+        "t": "else"
+      }
+    ],
+    "checkall": "false",
+    "outputs": 2,
+    "x": 452,
+    "y": 118,
+    "wires": [
+      [
+        "11f72e8d.c4ecb1"
+      ],
+      [
+        "a9681a7c.32cf58"
+      ]
+    ]
+  },
+  {
+    "id": "156114c.153c2eb",
+    "type": "json",
+    "z": "e99c8672.798798",
+    "name": "",
+    "x": 270,
+    "y": 120,
+    "wires": [
+      [
+        "1349cae4.696c25"
+      ]
+    ]
+  },
+  {
+    "id": "a9681a7c.32cf58",
+    "type": "json",
+    "z": "e99c8672.798798",
+    "name": "",
+    "x": 539.75,
+    "y": 191,
+    "wires": [
+      [
+        "c6431bba.1b0468"
+      ]
+    ]
+  },
+  {
+    "id": "11f72e8d.c4ecb1",
+    "type": "json",
+    "z": "e99c8672.798798",
+    "name": "",
+    "x": 638,
+    "y": 112,
+    "wires": [
+      [
+        "6f2ac209.2ed54c",
+        "cc91b9f4.f79be8"
+      ]
+    ]
+  },
+  {
+    "id": "6f2ac209.2ed54c",
+    "type": "function",
+    "z": "e99c8672.798798",
+    "name": "Build Spark params",
+    "func": "// This function parses the CMX data to construct\n// HTTP POST parameters for sending a Spark message to a room\nmap = msg.payload;\nclient = {}; //reset payload object for clarity\nclient.roomId = 'my_spark_room_id';\nif (map['version'] != '2.0'){\n msg.log = \"got post with unexpected version: #{map['version']}\";\n return msg;\n}else{\n msg.log = \"working with correct version\";\n}\nif (map['type'] != 'DevicesSeen'){\nmsg.log = \"got post for event that we're not interested in: #{map['type']}\";\nreturn msg;\n}\nvar o = map['data']['observations'];\nconsole.log('map.data.apMac = '+map.data['apMac']);\n for (var c in o){\n if (o.hasOwnProperty(c)) {\n if (!o[c]['location']){continue}\n console.log('map.data.observations.clientMac = '+o[c]['clientMac']);\n if (o[c]['clientMac'] === \"de:ad:00:00:be:ef\"){\n  apMac = map.data['apMac'];\n  rssi = o[c]['rssi'];\n  apTags = map.data['apTags'];\n  client.text = 'Client: Jason Bourne detected (rssi ' + rssi + 'dB) by AP tagged:' + apTags;\n }\n if (client.seenEpoch===null || client.seenEpoch === 0){continue}// # This probe is useless, so ignore it\n }\n}\nmsg.payload.body = client;\nreturn msg;",
+    "outputs": "1",
+    "noerr": 0,
+    "x": 857.5,
+    "y": 112,
+    "wires": [
+      [
+        "365def90.a9e52",
+        "52d2f179.718f8",
+        "3f1c9eca.618102"
+      ]
+    ]
+  },
+  {
+    "id": "3f1c9eca.618102",
+    "type": "debug",
+    "z": "e99c8672.798798",
+    "name": "Spark POST params",
+    "active": true,
+    "console": "false",
+    "complete": "true",
+    "x": 958.75,
+    "y": 196,
+    "wires": []
+  },
+  {
+    "id": "cc91b9f4.f79be8",
+    "type": "function",
+    "z": "e99c8672.798798",
+    "name": "Build Dashboard API call",
+    "func": "// This function creates HTTP GET parameters\n// for sending to the Meraki Dashboard\nmap = msg.payload;\napi_key = 'my_api_key';\ndashboard_header = {\n        'x-cisco-meraki-api-key': api_key,\n        'Content-Type': 'application/json'\n};\n\nmsg.headers = dashboard_header;\nmsg.ap_mac = map.data.apMac;\nmsg.payload = '';\nreturn msg;\n",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 825.75,
+    "y": 261,
+    "wires": [
+      [
+        "8917565c.62e4c8",
+        "dfd5bc9f.bad6d"
+      ]
+    ]
+  },
+  {
+    "id": "dfd5bc9f.bad6d",
+    "type": "http request",
+    "z": "e99c8672.798798",
+    "name": "Dashboard GET",
+    "method": "GET",
+    "ret": "obj",
+    "url": "https://dashboard.meraki.com/api/v0/networks/my_net_id/devices",
+    "tls": "",
+    "x": 1079.25,
+    "y": 262,
+    "wires": [
+      [
+        "60668eea.477b9",
+        "19789347.89ac1d"
+      ]
+    ]
+  },
+  {
+    "id": "60668eea.477b9",
+    "type": "debug",
+    "z": "e99c8672.798798",
+    "name": "Dashboard Response",
+    "active": true,
+    "console": "false",
+    "complete": "payload",
+    "x": 1228.75,
+    "y": 343,
+    "wires": []
+  },
+  {
+    "id": "19789347.89ac1d",
+    "type": "function",
+    "z": "e99c8672.798798",
+    "name": "Find device name by mac",
+    "func": "// This function parses the Meraki Dashboard API response\n// and creates a message to POST to a Spark room.\n// Fill in the roomId & bot_token with your own details\nclient = {}; //reset payload object for clarity\nclient.roomId = 'my_spark_room_id';\nresult = msg.payload;\nap_mac = msg.ap_mac;\nconsole.log('AP MAC= ' + ap_mac);\nmsg.payload = {};\nfor (var key in result) {\n  if (result.hasOwnProperty(key)) {\n    var dev_mac = result[key].mac;\n    if (dev_mac === ap_mac) {\n      var dev_name = result[key].name;\n      client.text = 'Device name: ' + dev_name;\n  }\n }\n}\nmsg.payload.body = client;\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 1328.75,
+    "y": 262,
+    "wires": [
+      [
+        "1d67604f.1986f",
+        "6695bb60.adc874"
+      ]
+    ]
+  },
+  {
+    "id": "8917565c.62e4c8",
+    "type": "debug",
+    "z": "e99c8672.798798",
+    "name": "Dashboard GET params",
+    "active": true,
+    "console": "false",
+    "complete": "true",
+    "x": 942.75,
+    "y": 341,
+    "wires": []
+  },
+  {
+    "id": "1d67604f.1986f",
+    "type": "debug",
+    "z": "e99c8672.798798",
+    "name": "find name function debug",
+    "active": true,
+    "console": "false",
+    "complete": "true",
+    "x": 1497.75,
+    "y": 342,
+    "wires": []
+  },
+  {
+    "id": "52d2f179.718f8",
+    "type": "Spark API",
+    "z": "e99c8672.798798",
+    "profileConfig": "b36066ab.ebbfc8",
+    "apiUrl": "http://127.0.0.1:1880/api/cisco_spark_v1.json",
+    "resource": "Messages",
+    "method": "createMessage",
+    "name": "post cmx details",
+    "x": 1286,
+    "y": 112,
+    "wires": [
+      [
+        "c0ac9386.1323e"
+      ]
+    ]
+  },
+  {
+    "id": "6695bb60.adc874",
+    "type": "Spark API",
+    "z": "e99c8672.798798",
+    "profileConfig": "b36066ab.ebbfc8",
+    "apiUrl": "http://127.0.0.1:1880/api/cisco_spark_v1.json",
+    "resource": "Messages",
+    "method": "createMessage",
+    "name": "post device name",
+    "x": 1424.25,
+    "y": 436,
+    "wires": [
+      [
+        "b36f2e32.fa5d6"
+      ]
+    ]
+  },
+  {
+    "id": "b36f2e32.fa5d6",
+    "type": "debug",
+    "z": "e99c8672.798798",
+    "name": "POST dev name",
+    "active": true,
+    "console": "false",
+    "complete": "true",
+    "x": 1535.75,
+    "y": 512,
+    "wires": []
+  },
+  {
+    "id": "54fdeef5.9f6c6",
+    "type": "comment",
+    "z": "e99c8672.798798",
+    "name": "https://flows.nodered.org/flow/72c484c527c1ded898d50c7f5347b827",
+    "info": "",
+    "x": 700,
+    "y": 60,
+    "wires": []
+  },
+  {
+    "id": "deb7a4d1.188ad8",
+    "type": "comment",
+    "z": "188e41b6.f85b4e",
+    "name": "https://flows.nodered.org/flow/b67248b9bc0777d641340403feb8bad6",
+    "info": "",
+    "x": 1438.8750457763672,
+    "y": 80,
+    "wires": []
+  },
+  {
+    "id": "17470e48.221902",
+    "type": "http in",
+    "z": "e11321ef.43f14",
+    "name": "",
+    "url": "/clients",
+    "method": "get",
+    "swaggerDoc": "",
+    "x": 310,
+    "y": 556.25,
+    "wires": [
+      [
+        "bce57817.51d5c8"
+      ]
+    ]
+  },
+  {
+    "id": "4b89817.e4cfb8",
+    "type": "http in",
+    "z": "e11321ef.43f14",
+    "name": "",
+    "url": "/clients/:mac",
+    "method": "get",
+    "swaggerDoc": "",
+    "x": 330,
+    "y": 636.25,
+    "wires": [
+      [
+        "35391970.84eac6"
+      ]
+    ]
+  },
+  {
+    "id": "4f90e146.bec15",
+    "type": "mongodb2 in",
+    "z": "e11321ef.43f14",
+    "service": "_ext_",
+    "configNode": "ad560c28.09535",
+    "name": "",
+    "collection": "myCollection",
+    "operation": "findOne",
+    "x": 650,
+    "y": 756.25,
+    "wires": [
+      [
+        "c0547443.594fd8",
+        "b457b6b7.3e3a28"
+      ]
+    ]
+  },
+  {
+    "id": "ceed1702.6e12d8",
+    "type": "mongodb2 in",
+    "z": "e11321ef.43f14",
+    "service": "_ext_",
+    "configNode": "ad560c28.09535",
+    "name": "",
+    "collection": "myCollection",
+    "operation": "find.toArray",
+    "x": 760,
+    "y": 556.25,
+    "wires": [
+      [
+        "33616a8d.7237f6",
+        "b7aecf03.63cbb"
+      ]
+    ]
+  },
+  {
+    "id": "31eb275c.da6488",
+    "type": "debug",
+    "z": "e11321ef.43f14",
+    "name": "/clients/:mac",
+    "active": false,
+    "console": "false",
+    "complete": "payload",
+    "x": 910,
+    "y": 636.25,
+    "wires": []
+  },
+  {
+    "id": "c0547443.594fd8",
+    "type": "debug",
+    "z": "e11321ef.43f14",
+    "name": "/clients/:mac - mongodb",
+    "active": false,
+    "console": "false",
+    "complete": "payload",
+    "x": 870,
+    "y": 796.25,
+    "wires": []
+  },
+  {
+    "id": "b457b6b7.3e3a28",
+    "type": "http response",
+    "z": "e11321ef.43f14",
+    "name": "",
+    "x": 930,
+    "y": 756.25,
+    "wires": []
+  },
+  {
+    "id": "33616a8d.7237f6",
+    "type": "http response",
+    "z": "e11321ef.43f14",
+    "name": "",
+    "x": 1010,
+    "y": 540,
+    "wires": []
+  },
+  {
+    "id": "35391970.84eac6",
+    "type": "function",
+    "z": "e11321ef.43f14",
+    "name": "msg.payload=msg.req.params.mac;",
+    "func": "//extract mac\nmsg.payload=msg.req.params.mac;\nreturn msg;\n",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 630,
+    "y": 636.25,
+    "wires": [
+      [
+        "31eb275c.da6488",
+        "cf38b710.e7f308"
+      ]
+    ]
+  },
+  {
+    "id": "964397a1.3de978",
+    "type": "comment",
+    "z": "e11321ef.43f14",
+    "name": "Log data",
+    "info": "",
+    "x": 340,
+    "y": 276.25,
+    "wires": []
+  },
+  {
+    "id": "8c07a419.16a798",
+    "type": "function",
+    "z": "e11321ef.43f14",
+    "name": "build operation parameters: filter, update",
+    "func": "// This function updates/creates the client in the database\nvar filter = msg.payload;\nif (\"string\" == typeof filter) {\n  filter = JSON.parse(filter);\n}\n\nmsg.payload = [\n    {'name':msg.payload.name},\n    msg.payload,\n    {upsert:true}\n];\n\nreturn msg;\n",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 620,
+    "y": 336.25,
+    "wires": [
+      [
+        "9ba85d2c.33196"
+      ]
+    ]
+  },
+  {
+    "id": "9ba85d2c.33196",
+    "type": "mongodb2 in",
+    "z": "e11321ef.43f14",
+    "service": "_ext_",
+    "configNode": "ad560c28.09535",
+    "name": "",
+    "collection": "myCollection",
+    "operation": "findOneAndUpdate",
+    "x": 670,
+    "y": 376.25,
+    "wires": [
+      [
+        "bb081c07.dc81d"
+      ]
+    ]
+  },
+  {
+    "id": "bb081c07.dc81d",
+    "type": "debug",
+    "z": "e11321ef.43f14",
+    "name": "mongdb insert/update",
+    "active": true,
+    "console": "false",
+    "complete": "payload",
+    "x": 1020,
+    "y": 380,
+    "wires": []
+  },
+  {
+    "id": "a28cd0f.a812f3",
+    "type": "function",
+    "z": "e11321ef.43f14",
+    "name": "Format Client",
+    "func": "// This function extracts the raw CMX data to create a consistent DB entry\nif(!msg.payload){\n    return null;\n}\n\nmap = msg.payload;\nclient = {}; //reset payload object for clarity\n\nif (map['version'] != '2.0'){\n    msg.log = \"got post with unexpected version: #{map['version']}\";\n    return msg;\n}else{\n    msg.log = \"working with correct version\";\n}\nif (map['type'] != 'DevicesSeen'){\nmsg.log = \"got post for event that we're not interested in: #{map['type']}\";\nreturn msg;\n}\n\nvar o = map['data']['observations'];\nconsole.log('map.data.apMac = '+map.data['apMac']);\n   for (var c in o){\n    if (o.hasOwnProperty(c)) {\n        //console.log(\"Key is \" + c + \", value is \" + o[c].location.lat);\n        if (!o[c]['location']){continue}\n        client.name = o[c]['clientMac'];\n        client.mac = o[c]['clientMac'];\n        client.lat = o[c]['location']['lat'];\n        client.lng = o[c]['location']['lng'];\n        client.unc = o[c]['location']['unc'];\n        client.seenString = o[c]['seenTime'];\n        client.seenEpoch = o[c]['seenEpoch'];\n        client.floors = map['data']['apFloors'] === null ? \"\" : map['data']['apFloors'].join;\n        client.manufacturer = o[c]['manufacturer'];\n        client.os = o[c]['os'];\n        client.ssid = o[c]['ssid'];\n        client.ap = map['data']['apMac'];\n        msg.log = \"AP #{map['data']['apMac']} on #{map['data']['apFloors']}: #{c}\";\n        if (client.seenEpoch===null || client.seenEpoch === 0){continue}//  # This probe is useless, so ignore it\n        \n    }\n    msg.payload = client;\n    node.send(msg);\n   }\n\n   \nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 540,
+    "y": 276.25,
+    "wires": [
+      [
+        "cbcdb0f1.2cef1",
+        "b296778b.3b9808",
+        "8c07a419.16a798"
+      ]
+    ]
+  },
+  {
+    "id": "cbcdb0f1.2cef1",
+    "type": "debug",
+    "z": "e11321ef.43f14",
+    "name": "format client",
+    "active": true,
+    "console": "false",
+    "complete": "payload",
+    "x": 910,
+    "y": 316.25,
+    "wires": []
+  },
+  {
+    "id": "74cd49dc.3a8f18",
+    "type": "debug",
+    "z": "e11321ef.43f14",
+    "name": "/cmx3 Raw Data",
+    "active": true,
+    "console": "false",
+    "complete": "payload",
+    "x": 890,
+    "y": 436.25,
+    "wires": []
+  },
+  {
+    "id": "bce57817.51d5c8",
+    "type": "function",
+    "z": "e11321ef.43f14",
+    "name": "find({})",
+    "func": "// Create search for all clients\nmsg.payload = {};\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 490,
+    "y": 556.25,
+    "wires": [
+      [
+        "ceed1702.6e12d8"
+      ]
+    ]
+  },
+  {
+    "id": "cf38b710.e7f308",
+    "type": "function",
+    "z": "e11321ef.43f14",
+    "name": "msg.payload = {'name':msg.payload};",
+    "func": "msg.payload = {'name':msg.payload};\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 630,
+    "y": 696.25,
+    "wires": [
+      [
+        "4f90e146.bec15"
+      ]
+    ]
+  },
+  {
+    "id": "ec5f339b.2194c",
+    "type": "function",
+    "z": "e11321ef.43f14",
+    "name": "CMX Sample Data",
+    "func": "msg.payload = {\n    \"version\": \"2.0\",\n    \"secret\": \"supersecret\",\n    \"type\": \"DevicesSeen\",\n    \"data\": {\n        \"apMac\": \"00:18:0a:13:dd:b0\",\n        \"apFloors\": [],\n        \"apTags\": [ \"\", \"home\", \"\" ],\n        \"observations\": [ { \n            \"ipv4\": \"/192.168.0.15\",\n            \"location\": {\n                \"lat\": 51.5355157,\n                \"lng\": -0.06990350000000944,\n                \"unc\": 1.1185886512767726,\n                \"x\": [], \"y\": [] \n                \n            },\n            \"seenTime\": \"2016-07-29T13:17:10Z\",\n            \"ssid\": \".interwebs\",\n            \"os\": \"Debian-based Linux\",\n            \"clientMac\": \"CC:CC:CC:CC:CC:CC\",\n            \"seenEpoch\": 1469798230,\n            \"rssi\": 48,\n            \"ipv6\": null,\n            \"manufacturer\": \"Edimax Technology\" \n            }, \n            { \n            \"ipv4\": null,\n            \"location\": {\n                \"lat\": 51.5133157,\n                \"lng\": -0.06890350000000944,\n                \"unc\": 49, \"x\": [],\n                \"y\": []\n                },\n            \"seenTime\": \"2016-07-29T13:17:07Z\",\n            \"ssid\": \"Hotspot-123\",\n            \"os\": \"fancyOS\",\n            \"clientMac\": \"DD:DD:DD:DD:DD:DD\",\n            \"seenEpoch\": 1469798227,\n            \"rssi\": 9,\n            \"ipv6\": null,\n            \"manufacturer\": \"Samsung(THAILAND)\"\n            }\n        ]\n    }\n};\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 550,
+    "y": 216.25,
+    "wires": [
+      [
+        "a28cd0f.a812f3",
+        "ad5a4b86.711758"
+      ]
+    ]
+  },
+  {
+    "id": "d42eff50.d2b17",
+    "type": "inject",
+    "z": "e11321ef.43f14",
+    "name": "Sample Client C D",
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "x": 330,
+    "y": 216.25,
+    "wires": [
+      [
+        "ec5f339b.2194c"
+      ]
+    ]
+  },
+  {
+    "id": "ad5a4b86.711758",
+    "type": "debug",
+    "z": "e11321ef.43f14",
+    "name": "CMX Sample Raw Data",
+    "active": true,
+    "console": "false",
+    "complete": "payload",
+    "x": 870,
+    "y": 216.25,
+    "wires": []
+  },
+  {
+    "id": "b296778b.3b9808",
+    "type": "debug",
+    "z": "e11321ef.43f14",
+    "name": "format client. info",
+    "active": true,
+    "console": "false",
+    "complete": "info",
+    "x": 890,
+    "y": 276.25,
+    "wires": []
+  },
+  {
+    "id": "d418d59c.75fb48",
+    "type": "mongodb2 in",
+    "z": "e11321ef.43f14",
+    "service": "_ext_",
+    "configNode": "ad560c28.09535",
+    "name": "",
+    "collection": "myCollection",
+    "operation": "find.toArray",
+    "x": 660,
+    "y": 996.25,
+    "wires": [
+      [
+        "5afc1664.1dda88"
+      ]
+    ]
+  },
+  {
+    "id": "e1c37d73.12f75",
+    "type": "inject",
+    "z": "e11321ef.43f14",
+    "name": "List all clients",
+    "topic": "",
+    "payload": "{}",
+    "payloadType": "json",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "x": 310,
+    "y": 996.25,
+    "wires": [
+      [
+        "d418d59c.75fb48"
+      ]
+    ]
+  },
+  {
+    "id": "5afc1664.1dda88",
+    "type": "debug",
+    "z": "e11321ef.43f14",
+    "name": "mongo data",
+    "active": true,
+    "console": "false",
+    "complete": "true",
+    "x": 970,
+    "y": 980,
+    "wires": []
+  },
+  {
+    "id": "ad91f25a.1856a",
+    "type": "template",
+    "z": "e11321ef.43f14",
+    "name": "CSS",
+    "field": "payload.style",
+    "fieldType": "msg",
+    "format": "handlebars",
+    "syntax": "mustache",
+    "template": "html, body {\n  margin: 0;\n  padding: 0;\n}\n\nbody {\n  font-family: \"proxima-nova-1\",\"proxima-nova-2\", \"Helvetica Neue\", Helvetica, verdana, sans-serif;\n  -webkit-font-smoothing: antialiased;\n}\n\n#masthead {\n  height: 125px;\n  width: 100%;\n  position: relative;\n  background: #FFFFFF;\n  border-top: 4px solid #78be20;\n  box-shadow: 0 2px 7px rgba(0,0,0,0.2);\n}\n\n#masthead-content {\n  margin: 0 auto;\n  position: relative;\n  width: 80%;\n  height: 100%;\n}\n\n#masthead-content img {\n  float: left;\n  margin: 32px;\n  width: 165px;\n  margin-left: 0;\n}\n\n#content {\n  width: 80%;\n  margin: 60px auto;\n  padding: 40px;\n  box-sizing: border-box;\n  border-radius: 9px;\n  background: #FAFAFA;\n}\n\n#mac-address {\n  margin-bottom: 10px;\n}\n\n#mac-field {\n  width: 30%;\n  height: 35px;\n  margin-bottom: 20px;\n  padding-left: 13px;\n  border: 1px solid #E6E6E6;\n  border-radius: 2px;\n  box-sizing: border-box;\n  font-family: \"proxima-nova-1\",\"proxima-nova-2\", \"Helvetica Neue\", Helvetica, verdana, sans-serif;\n  font-size: 16px;\n  font-weight: 100;\n  min-width: 136px;\n}\n\n#map-wrapper {\n  width: 100%;\n  height: 700px;\n}\n\n#map-canvas {\n  height: 70%;\n  width: 70%;\n}\n\n\nh1 {\n  color: #78be20;\n  font-weight: 100;\n  font-size: 38px;\n  margin-top: 0;\n  letter-spacing: -1px;\n}\n\n\n#last-mac {\n  color: #6B6B6B;\n  width: 100%;\n  font-weight: 400;\n  margin-bottom: 10px;\n  font-size: 14px;\n}\n\n.small {\n  color: #6B6B6B;\n  font-weight: 400;\n  margin-bottom: 30px;\n  font-size: 14px;\n}\n\n.bold {\n  font-weight: 600;\n}\n\nbutton, input {\n  width: 11%;\n}\n\nbutton {\n  height: 35px;\n  border: none;\n  background: #737373;\n  border-radius: 2px;\n  box-sizing: border-box;\n  color: white;\n  font-family: \"proxima-nova-1\",\"proxima-nova-2\", \"Helvetica Neue\", Helvetica, verdana, sans-serif;\n  font-weight: 200;\n  font-size: 14px;\n  padding: 0;\n  min-width: 70px;\n}\n\nbutton:hover{\n  background: #616060;\n}\n",
+    "x": 650,
+    "y": 896.25,
+    "wires": [
+      [
+        "20c99e1e.ea4db2"
+      ]
+    ]
+  },
+  {
+    "id": "c3d7af22.213c",
+    "type": "template",
+    "z": "e11321ef.43f14",
+    "name": "JavaScript",
+    "field": "payload.script",
+    "fieldType": "msg",
+    "format": "javascript",
+    "syntax": "plain",
+    "template": "(function ($) {\n  var map,                                      // This is the Google map\n    clientMarker,                               // The current marker when we are following a single client\n    clientUncertaintyCircle,                    // The circle describing that client's location uncertainty\n    lastEvent,                                  // The last scheduled polling task\n    lastInfoWindowMac,                          // The last Mac displayed in a marker tooltip\n    allMarkers = [],                            // The markers when we are in \"View All\" mode\n    lastMac = \"\",                               // The last requested MAC to follow\n    infoWindow = new google.maps.InfoWindow();  // The marker tooltip\n    /*\n    ,\n    markerImage = new google.maps.MarkerImage('blue_circle.png',\n      new google.maps.Size(15, 15),\n      new google.maps.Point(0, 0),\n      new google.maps.Point(4.5, 4.5)\n    );\n    */\n    \n    var latlngbounds = new google.maps.LatLngBounds();\n\n  // Removes all markers\n  function clearAll() {\n    clientMarker.setMap(null);\n    clientUncertaintyCircle.setMap(null);\n    lastInfoWindowMac = \"\";\n    var m;\n    while (allMarkers.length !== 0) {\n      m = allMarkers.pop();\n      if (infoWindow.anchor === m) {\n        lastInfoWindowMac = m.mac;\n      }\n      m.setMap(null);\n    }\n  }\n\n  // Plots the location and uncertainty for a single MAC address\n  function track(client) {\n    clearAll();\n    if (client !== undefined && client.lat !== undefined && !(typeof client.lat === 'undefined')) {\n      var pos = new google.maps.LatLng(client.lat, client.lng);\n      console.log('track client pos '+pos);\n      if (client.manufacturer !== undefined) {\n        mfrStr = client.manufacturer + \" \";\n      } else {\n        mfrStr = \"\";\n      }\n      if (client.os !== undefined) {\n        osStr = \" running \" + client.os;\n      } else {\n        osStr = \"\";\n      }\n      if (client.ssid !== undefined) {\n        ssidStr = \" with SSID '\" + client.ssid + \"'\";\n      } else {\n        ssidStr = \"\";\n      }\n      if (client.floors !== undefined && client.floors !== \"\") {\n        floorStr = \" at '\" + client.floors + \"'\"\n      } else {\n        floorStr = \"\";\n      }\n      $('#last-mac').text(mfrStr + \"'\" + lastMac + \"'\" + osStr + ssidStr +\n        \" last seen on \" + client.seenString + floorStr +\n        \" with uncertainty \" + client.unc.toFixed(1) + \" meters (reloading every 20 seconds)\");\n      map.setCenter(pos);\n      clientMarker.setMap(map);\n      clientMarker.setPosition(pos);\n      clientUncertaintyCircle = new google.maps.Circle({\n        map: map,\n        center: pos,\n        radius: client.unc,\n        fillColor: 'RoyalBlue',\n        fillOpacity: 0.25,\n        strokeColor: 'RoyalBlue',\n        strokeWeight: 1\n      });\n    } else {\n      $('#last-mac').text(\"Client '\" + lastMac + \"' could not be found\");\n    }\n  }\n\n  // Looks up a single MAC address\n  function lookup(mac) {\n    $.getJSON('/clients/' + mac, function (response) {\n      track(response);\n    });\n  }\n\n  // Adds a marker for a single client within the \"view all\" perspective\n  function addMarker(client) {\n    var pos = new google.maps.LatLng(client.lat, client.lng);\n    console.log('addMarker pos '+pos);\n    var m = new google.maps.Marker({\n      position: pos,\n      map: map,\n      mac: client.mac,\n      //icon: markerImage\n    });\n    \n    if(client.lat){\n        latlngbounds.extend(pos);\n        map.fitBounds(latlngbounds);\n    }\n    google.maps.event.addListener(m, 'click', function () {\n        //build info\n        var htmlString = '<h2>Client:  '+client.name +'</h2>';\n        \n        for (var key in client) {\n            if (client.hasOwnProperty(key)) {\n                if(client[key] !== undefined){\n                    if(key == '_id' || key == 'name'){continue}\n                    htmlString += '<p>'+key+' : '+client[key]+'</p>';\n                }\n            }\n        }\n        \n        infoWindow.setContent(\"<div>\" + htmlString + \"</div>\" + \"(<a class='client-filter' href='#' data-mac='\" +\n        client.mac + \"'>Follow this client)</a>\");\n        //\n      //infoWindow.setContent(\"<div>\" + client.mac + \"</div> (<a class='client-filter' href='#' data-mac='\" +\n        //client.mac + \"'>Follow this client)</a>\");\n        \n      infoWindow.open(map, m);\n    });\n    if (client.mac === lastInfoWindowMac) {\n      infoWindow.open(map, m);\n    }\n    allMarkers.push(m);\n  }\n\n  // Displays markers for all clients\n  function trackAll(clients) {\n    clearAll();\n    if (clients.length === 0) {\n      $('#last-mac').text(\"Found no clients (if you just started the web server, you may need to wait a few minutes to receive pushes from Meraki)\");\n    } else { $('#last-mac').text(\"Found \" + clients.length + \" clients (reloading every 20 seconds)\"); }\n    clientUncertaintyCircle.setMap(null);\n    clients.forEach(addMarker);\n  }\n\n  // Looks up all MAC addresses\n  function lookupAll() {\n    $('#last-mac').text(\"Looking up all clients...\");\n    $.getJSON('/clients/', function (response) {\n      trackAll(response);\n    });\n  }\n\n  // Begins a task timer to reload a single MAC every 20 seconds\n  function startLookup() {\n    lastMac = $('#mac-field').val().trim();\n    if (lastEvent !== null) { window.clearInterval(lastEvent); }\n    lookup(lastMac);\n    lastEvent = window.setInterval(lookup, 20000, lastMac);\n  }\n\n  // Begins a task timer to reload all MACs every 20 seconds\n  function startLookupAll() {\n    if (lastEvent !== null) { window.clearInterval(lastEvent); }\n    lastEvent = window.setInterval(lookupAll, 20000);\n    lookupAll();\n  }\n\n  // This is called after the DOM is loaded, so we can safely bind all the\n  // listeners here.\n  function initialize() {\n    var center = new google.maps.LatLng(37.7705, -122.3870);\n    var mapOptions = {\n      zoom: 20,\n      center: center\n    };\n    map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);\n    clientMarker = new google.maps.Marker({\n      position: center,\n      map: null,\n      //icon: markerImage\n    });\n    clientUncertaintyCircle = new google.maps.Circle({\n      position: center,\n      map: null\n    });\n\n    $('#track').click(startLookup).bind(\"enterKey\", startLookup);\n\n    $('#all').click(startLookupAll);\n\n    $(document).on(\"click\", \".client-filter\", function (e) {\n      e.preventDefault();\n      var mac = $(this).data('mac');\n      $('#mac-field').val(mac);\n      startLookup();\n    });\n\n    startLookupAll();\n  }\n\n  // Call the initialize function when the window loads\n  $(window).load(initialize);\n}(jQuery));",
+    "x": 490,
+    "y": 896.25,
+    "wires": [
+      [
+        "ad91f25a.1856a"
+      ]
+    ]
+  },
+  {
+    "id": "5881d887.e58c88",
+    "type": "http in",
+    "z": "e11321ef.43f14",
+    "name": "",
+    "url": "/cmxapimap",
+    "method": "get",
+    "swaggerDoc": "",
+    "x": 320,
+    "y": 896.25,
+    "wires": [
+      [
+        "c3d7af22.213c"
+      ]
+    ]
+  },
+  {
+    "id": "e8076f61.ce0c",
+    "type": "http response",
+    "z": "e11321ef.43f14",
+    "name": "",
+    "x": 930,
+    "y": 896.25,
+    "wires": []
+  },
+  {
+    "id": "20c99e1e.ea4db2",
+    "type": "template",
+    "z": "e11321ef.43f14",
+    "name": "HTML",
+    "field": "payload",
+    "fieldType": "msg",
+    "format": "handlebars",
+    "syntax": "mustache",
+    "template": "<html>\n  <head>\n    <title>CMX push API demo app with Node-RED</title>\n    <meta name=\"viewport\" content=\"initial-scale=1.0, user-scalable=no\">\n    <meta charset=\"utf-8\">\n    <script>TypekitConfig={kitId:\"hum1oye\",scriptTimeout:1.5e3},function(){var a=document.getElementsByTagName(\"html\")[0];a.className+=\" wf-loading\";var b=setTimeout(function(){a.className=a.className.replace(/(\\s|^)wf-loading(\\s|$)/g,\"\"),a.className+=\" wf-inactive\"},TypekitConfig.scriptTimeout),c=document.createElement(\"script\");c.src=\"//use.typekit.com/\"+TypekitConfig.kitId+\".js\",c.type=\"text/javascript\",c.async=\"true\",c.onload=c.onreadystatechange=function(){var a=this.readyState;if(!a||a==\"complete\"||a==\"loaded\"){clearTimeout(b);try{Typekit.load(TypekitConfig)}catch(c){}}};var d=document.getElementsByTagName(\"script\")[0];d.parentNode.insertBefore(c,d)}()</script>\n    <script src=\"https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&key=AIzaSyCWFVfLzjGaepofBse9sHFF-S-mtqVjzLA\"></script>\n    <script src=\"http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js\"></script>\n    <script>{{{payload.script}}}</script>\n    <style>{{{payload.style}}}</style>\n  </head>\n  <body>\n    <div id=\"masthead\">\n      <div id=\"masthead-content\">\n        <img src=\"https://meraki.cisco.com/img/cisco-meraki.png\"/>\n      </div>\n    </div>\n    <div id=\"content\">\n      <h1>CMX API Demo with Node-RED</h1>\n      <div id=\"mac-address\">\n        <input id=\"mac-field\" type=\"text\" placeholder=\"Enter MAC address\" />&nbsp;\n        <button id=\"track\">Follow</button>&nbsp;\n        <button id=\"all\">View All</button>\n        <button><a href=/clients target=\"_blank\" style=\"text-decoration:none; color: inherit\">View All - JSON</a></button>\n      </div>\n      <div id=\"last-mac\"></div>\n      <div class=\"small\"><span class=\"bold\">Clients in the wrong place?</span> Make sure your APs are placed properly in Dashboard.</div>\n      <div id=\"map-wrapper\">\n        <div id=\"map-canvas\"></div>\n      </div>\n    </div>\n  </body>\n</html>",
+    "x": 790,
+    "y": 896.25,
+    "wires": [
+      [
+        "e8076f61.ce0c"
+      ]
+    ]
+  },
+  {
+    "id": "b7aecf03.63cbb",
+    "type": "debug",
+    "z": "e11321ef.43f14",
+    "name": "find({})",
+    "active": false,
+    "console": "false",
+    "complete": "payload",
+    "x": 930,
+    "y": 596.25,
+    "wires": []
+  },
+  {
+    "id": "e0dc908a.e8ccf",
+    "type": "comment",
+    "z": "e11321ef.43f14",
+    "name": "Client Front-end API",
+    "info": "",
+    "x": 310,
+    "y": 516.25,
+    "wires": []
+  },
+  {
+    "id": "7799f4de.15b71c",
+    "type": "comment",
+    "z": "e11321ef.43f14",
+    "name": "Receive CMX Data",
+    "info": "",
+    "x": 310,
+    "y": 136.25,
+    "wires": []
+  },
+  {
+    "id": "8be2c035.6bf26",
+    "type": "comment",
+    "z": "e11321ef.43f14",
+    "name": "Utilities",
+    "info": "",
+    "x": 270,
+    "y": 956.25,
+    "wires": []
+  },
+  {
+    "id": "4e06f495.66cc1c",
+    "type": "function",
+    "z": "e11321ef.43f14",
+    "name": "CMX Sample Data",
+    "func": "msg.payload = {\n    \"version\": \"2.0\",\n    \"secret\": \"supersecret\",\n    \"type\": \"DevicesSeen\",\n    \"data\": {\n        \"apMac\": \"00:18:0a:13:dd:b0\",\n        \"apFloors\": [],\n        \"apTags\": [ \"\", \"home\", \"\" ],\n        \"observations\": [ { \n            \"ipv4\": \"/192.168.0.15\",\n            \"location\": {\n                \"lat\": 51.5155157,\n                \"lng\": -0.06590350000000944,\n                \"unc\": 1.2185886512767726,\n                \"x\": [], \"y\": [] \n                \n            },\n            \"seenTime\": \"2016-07-29T13:17:10Z\",\n            \"ssid\": \".interwebs\",\n            \"os\": \"Debian-based Linux\",\n            \"clientMac\": \"AA:AA:AA:AA:AA:AA\",\n            \"seenEpoch\": 1469795230,\n            \"rssi\": 48,\n            \"ipv6\": null,\n            \"manufacturer\": \"Edimax Technology\" \n            }, \n            { \n            \"ipv4\": null,\n            \"location\": {\n                \"lat\": 51.5215157,\n                \"lng\": -0.069905350000000944,\n                \"unc\": 49, \"x\": [],\n                \"y\": []\n                },\n            \"seenTime\": \"2016-07-29T13:17:07Z\",\n            \"ssid\": null,\n            \"os\": null,\n            \"clientMac\": \"BB:BB:BB:BB:BB:BB\",\n            \"seenEpoch\": 1469598227,\n            \"rssi\": 9,\n            \"ipv6\": null,\n            \"manufacturer\": \"Samsung(THAILAND)\"\n            }\n        ]\n    }\n};\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 550,
+    "y": 176.25,
+    "wires": [
+      [
+        "a28cd0f.a812f3"
+      ]
+    ]
+  },
+  {
+    "id": "d7785b5d.13ff38",
+    "type": "inject",
+    "z": "e11321ef.43f14",
+    "name": "Sample Client A B",
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "x": 330,
+    "y": 176.25,
+    "wires": [
+      [
+        "4e06f495.66cc1c"
+      ]
+    ]
+  },
+  {
+    "id": "c9f7b57f.eabb58",
+    "type": "comment",
+    "z": "e11321ef.43f14",
+    "name": "Client Front-end Site",
+    "info": "",
+    "x": 310,
+    "y": 856.25,
+    "wires": []
+  },
+  {
+    "id": "22af0a5f.233456",
+    "type": "comment",
+    "z": "e11321ef.43f14",
+    "name": "README",
+    "info": "#Cisco Meraki CMX API - Demo Map\nThis Flow is an example of how to use the Cisco Meraki CMX\nJSON feed to store clients into a database and track them\non a Google map.\n\nThere are three major components\n- CMX Receier\n- Front-end API\n- Front-end Website (Google MAP)\n\n\n##CMX Receier -\nThe CMX Receiver utilizes the Node-RED CMX node to collect\nJSON data from a Cisco Meraki network. This feed is generally\nupdated within 2 minutes. There are two Sample Clients feeds\nthat can be used to test the flow.\n\nOnce the data has been received, the JSON is parsed and\ncommitted to a MongoDB. Please ensure your MongoDB is running\nfor this flow to work properly.\n\n\n##Front-end API - \nThere are two [GET] HTTP routes that provide access to the \ncollected client data. These will be used by the front-end \nwebsite to pull the client information for all or specific\nclients. Fun Fact: You can also use these routes with Postman\nor a standard browser to pull the data directly.\n\n##Front-end Website - \nThis will provide the webpage to view the Google map and \ntrack clients.\nThe website can be viewed at\n`http://yourserver:1880/cmxapimap`\n\n#Setup\n- Configure a Cisco Meraki network to post the CMX JSON to\nyour listening URL. Example: `http://yourserver:1880/cmx`\n\n- Install and configure MongoDB. Then update the MongoDB2 \nnodes within your flow to match the appropriate settings.\nExample: `mongodb://localhost:27017/test`\n\n- Insert Sample Client information by pressing the blue\nbuttons for each. Note, this will place the clients in London\nby default. Remove these clients if you do not want to \nconfuse your map centering\n\nMore information can be found on the Meraki Developers portal\nhttp://developers.meraki.com/tagged/Location\n\n\nThis flow was created by \nCory Guynn\nSystems Engineer\nCisco Meraki \n2016\n\nFor other fun IoT projects\nhttp://www.InternetOfLEGO.com\n\nMIT License. \n\n",
+    "x": 590,
+    "y": 56.25,
+    "wires": []
+  },
+  {
+    "id": "9923d984.b5d1f8",
+    "type": "inject",
+    "z": "e11321ef.43f14",
+    "name": "DELETE ALL DATA",
+    "topic": "",
+    "payload": "{}",
+    "payloadType": "json",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "x": 330,
+    "y": 1041.25,
+    "wires": [
+      [
+        "2b9f8d5f.78ebf2"
+      ]
+    ]
+  },
+  {
+    "id": "2b9f8d5f.78ebf2",
+    "type": "mongodb2 in",
+    "z": "e11321ef.43f14",
+    "service": "_ext_",
+    "configNode": "ad560c28.09535",
+    "name": "",
+    "collection": "myCollection",
+    "operation": "remove",
+    "x": 650,
+    "y": 1041.25,
+    "wires": [
+      [
+        "aa2da06a.60c8a"
+      ]
+    ]
+  },
+  {
+    "id": "aa2da06a.60c8a",
+    "type": "debug",
+    "z": "e11321ef.43f14",
+    "name": "delete mongo data",
+    "active": true,
+    "console": "false",
+    "complete": "true",
+    "x": 930,
+    "y": 1041.25,
+    "wires": []
+  },
+  {
+    "id": "f43d96ad.f36448",
+    "type": "comment",
+    "z": "e11321ef.43f14",
+    "name": "https://flows.nodered.org/flow/0529804d7325e710a4e146edcc276500",
+    "info": "",
+    "x": 726.2500305175781,
+    "y": 103.50000381469727,
+    "wires": []
+  },
+  {
+    "id": "ee049f09.670fa",
+    "type": "http in",
+    "z": "81b9956f.f67058",
+    "name": "GET /api/v1/meraki/",
+    "url": "/api/v1/meraki/",
+    "method": "get",
+    "upload": false,
+    "swaggerDoc": "",
+    "x": 290,
+    "y": 660,
+    "wires": [
+      [
+        "a89a2ba4.4f33e8",
+        "fa24c479.f2e658"
+      ]
+    ],
+    "outputLabels": [
+      "http"
+    ]
+  },
+  {
+    "id": "9698c937.4f0858",
+    "type": "http response",
+    "z": "81b9956f.f67058",
+    "name": "",
+    "statusCode": "",
+    "headers": {},
+    "x": 830,
+    "y": 660,
+    "wires": []
+  },
+  {
+    "id": "b54e9642.550338",
+    "type": "mongodb out",
+    "z": "81b9956f.f67058",
+    "mongodb": "8f742f94.7b2e5",
+    "name": "Store Location entry",
+    "collection": "locations",
+    "payonly": true,
+    "upsert": false,
+    "multi": false,
+    "operation": "store",
+    "x": 1020,
+    "y": 520,
+    "wires": []
+  },
+  {
+    "id": "8ad64de0.d23c8",
+    "type": "mongodb in",
+    "z": "81b9956f.f67058",
+    "mongodb": "8f742f94.7b2e5",
+    "name": "find mac",
+    "collection": "locations",
+    "operation": "find",
+    "x": 680,
+    "y": 660,
+    "wires": [
+      [
+        "9698c937.4f0858",
+        "d1c037c9.f7c1a8"
+      ]
+    ]
+  },
+  {
+    "id": "14a55855.b13a98",
+    "type": "function",
+    "z": "81b9956f.f67058",
+    "name": "msg _id",
+    "func": "msg._id = msg.payload.clientMac.replace(/:/g, '');\nmsg.payload.apMac = msg.apMac.replace(/:/g, '')\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 780,
+    "y": 520,
+    "wires": [
+      [
+        "b54e9642.550338"
+      ]
+    ]
+  },
+  {
+    "id": "a89a2ba4.4f33e8",
+    "type": "function",
+    "z": "81b9956f.f67058",
+    "name": "msg find query",
+    "func": "msg.payload = {_id: msg.payload.mac};\nmsg.limit = 1;\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 500,
+    "y": 660,
+    "wires": [
+      [
+        "8ad64de0.d23c8"
+      ]
+    ]
+  },
+  {
+    "id": "ab4ee129.dce54",
+    "type": "inject",
+    "z": "81b9956f.f67058",
+    "name": "each hour",
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "repeat": "3600",
+    "crontab": "",
+    "once": true,
+    "x": 290,
+    "y": 800,
+    "wires": [
+      [
+        "7877b795.52a8f8"
+      ]
+    ]
+  },
+  {
+    "id": "7877b795.52a8f8",
+    "type": "function",
+    "z": "81b9956f.f67058",
+    "name": "timestamp 24 hours ago",
+    "func": "// query to find entries older then one hour\nmsg.payload = {seenEpoch: {$lt: msg.payload/1000 - 86400}}\n//msg.payload = {seenEpoch: {$lt: msg.payload - 60000}}\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 510,
+    "y": 800,
+    "wires": [
+      [
+        "1489c712.955c69"
+      ]
+    ]
+  },
+  {
+    "id": "1489c712.955c69",
+    "type": "mongodb out",
+    "z": "81b9956f.f67058",
+    "mongodb": "8f742f94.7b2e5",
+    "name": "remove older then 24 hours",
+    "collection": "locations",
+    "payonly": false,
+    "upsert": false,
+    "multi": false,
+    "operation": "delete",
+    "x": 780,
+    "y": 800,
+    "wires": []
+  },
+  {
+    "id": "5ad66b19.06e294",
+    "type": "link in",
+    "z": "e99c8672.798798",
+    "name": "",
+    "links": [],
+    "x": 135,
+    "y": 120,
+    "wires": [
+      [
+        "156114c.153c2eb",
+        "ad8b4f03.b846f"
+      ]
+    ]
+  },
+  {
+    "id": "7b34f41b.6b833c",
+    "type": "link in",
+    "z": "e11321ef.43f14",
+    "name": "",
+    "links": [],
+    "x": 235,
+    "y": 440,
+    "wires": [
+      [
+        "a28cd0f.a812f3",
+        "74cd49dc.3a8f18"
+      ]
+    ]
+  },
+  {
+    "id": "f8390930.7e0fa8",
+    "type": "http in",
+    "z": "81b9956f.f67058",
+    "name": "GET /api/v1/usermap/:first",
+    "url": "/api/v1/usermap/:first",
+    "method": "get",
+    "upload": false,
+    "swaggerDoc": "",
+    "x": 310,
+    "y": 1000,
+    "wires": [
+      [
+        "72c53a1.08849c4",
+        "19cd041d.a90e7c"
+      ]
+    ]
+  },
+  {
+    "id": "72c53a1.08849c4",
+    "type": "function",
+    "z": "81b9956f.f67058",
+    "name": "msg find query",
+    "func": "msg.payload = {first: msg.req.params.first};\nmsg.limit = 1;\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 540,
+    "y": 1000,
+    "wires": [
+      [
+        "c6639014.e3cfc"
+      ]
+    ]
+  },
+  {
+    "id": "c6639014.e3cfc",
+    "type": "mongodb in",
+    "z": "81b9956f.f67058",
+    "mongodb": "8f742f94.7b2e5",
+    "name": "find firstname",
+    "collection": "usermap",
+    "operation": "find",
+    "x": 760,
+    "y": 1000,
+    "wires": [
+      [
+        "f79bee21.aa0cc"
+      ]
+    ]
+  },
+  {
+    "id": "f79bee21.aa0cc",
+    "type": "http response",
+    "z": "81b9956f.f67058",
+    "name": "",
+    "statusCode": "",
+    "headers": {},
+    "x": 950,
+    "y": 1000,
+    "wires": []
+  },
+  {
+    "id": "6c6921eb.76f6f",
+    "type": "comment",
+    "z": "3f0a5568.69490a",
+    "name": "Incoming SMS from Twilio",
+    "info": "",
+    "x": 242.10000610351562,
+    "y": 232,
+    "wires": []
+  },
+  {
+    "id": "4dc82765.b32868",
+    "type": "mqtt out",
+    "z": "a47538b6.223c38",
+    "name": "",
+    "topic": "home/switch0",
+    "qos": "1",
+    "retain": "true",
+    "broker": "215c8398.a69ccc",
+    "x": 480,
+    "y": 120,
+    "wires": []
+  },
+  {
+    "id": "741097fc.c5ed28",
+    "type": "ui_switch",
+    "z": "a47538b6.223c38",
+    "name": "",
+    "label": "Lava Lamp",
+    "group": "6018ee91.a7989",
+    "order": 0,
+    "width": 0,
+    "height": 0,
+    "passthru": true,
+    "decouple": "false",
+    "topic": "",
+    "style": "",
+    "onvalue": "1",
+    "onvalueType": "num",
+    "onicon": "",
+    "oncolor": "",
+    "offvalue": "0",
+    "offvalueType": "num",
+    "officon": "",
+    "offcolor": "",
+    "x": 105.99999618530273,
+    "y": 120.00001049041748,
+    "wires": [
+      [
+        "4dc82765.b32868"
+      ]
+    ]
+  },
+  {
+    "id": "66d15574.c1228c",
+    "type": "ui_chart",
+    "z": "a47538b6.223c38",
+    "name": "Temperature Chart",
+    "group": "2e16ce29.e93182",
+    "order": 2,
+    "width": "4",
+    "height": "3",
+    "label": "",
+    "chartType": "line",
+    "legend": "false",
+    "xformat": "HH:mm",
+    "interpolate": "linear",
+    "nodata": "",
+    "dot": false,
+    "ymin": "10",
+    "ymax": "40",
+    "removeOlder": "8",
+    "removeOlderPoints": "",
+    "removeOlderUnit": "3600",
+    "cutout": 0,
+    "colors": [
+      "#1f77b4",
+      "#aec7e8",
+      "#ff7f0e",
+      "#2ca02c",
+      "#98df8a",
+      "#d62728",
+      "#ff9896",
+      "#9467bd",
+      "#c5b0d5"
+    ],
+    "useOldStyle": false,
+    "x": 670,
+    "y": 340,
+    "wires": [
+      [],
+      []
+    ]
+  },
+  {
+    "id": "4319a32b.31852c",
+    "type": "mqtt in",
+    "z": "a47538b6.223c38",
+    "name": "",
+    "topic": "weatherStation/temperature",
+    "qos": "1",
+    "broker": "80e74793.a33ad8",
+    "x": 167.9998550415039,
+    "y": 303.666748046875,
+    "wires": [
+      [
+        "66d15574.c1228c",
+        "1a03e7bb.c4df58",
+        "12f5ecaf.d76503"
+      ]
+    ]
+  },
+  {
+    "id": "48f84951.3989b8",
+    "type": "mqtt in",
+    "z": "a47538b6.223c38",
+    "name": "",
+    "topic": "weatherStation/humidity",
+    "qos": "1",
+    "broker": "80e74793.a33ad8",
+    "x": 159.83313751220703,
+    "y": 213.66664505004883,
+    "wires": [
+      [
+        "d101873e.48c8a8",
+        "12f5ecaf.d76503",
+        "b316637a.a0cca"
+      ]
+    ]
+  },
+  {
+    "id": "38bceaaf.392256",
+    "type": "ui_chart",
+    "z": "a47538b6.223c38",
+    "name": "Humidity Chart",
+    "group": "2e16ce29.e93182",
+    "order": 4,
+    "width": "4",
+    "height": "3",
+    "label": "",
+    "chartType": "line",
+    "legend": "false",
+    "xformat": "HH:mm",
+    "interpolate": "linear",
+    "nodata": "",
+    "dot": false,
+    "ymin": "0",
+    "ymax": "100",
+    "removeOlder": "8",
+    "removeOlderPoints": "",
+    "removeOlderUnit": "3600",
+    "cutout": 0,
+    "colors": [
+      "#1f77b4",
+      "#aec7e8",
+      "#ff7f0e",
+      "#2ca02c",
+      "#98df8a",
+      "#d62728",
+      "#ff9896",
+      "#9467bd",
+      "#c5b0d5"
+    ],
+    "useOldStyle": false,
+    "x": 660.8331642150879,
+    "y": 246.66663074493408,
+    "wires": [
+      [],
+      []
+    ]
+  },
+  {
+    "id": "875027e0.6b33f8",
+    "type": "mqtt in",
+    "z": "a47538b6.223c38",
+    "name": "",
+    "topic": "weatherStation/#",
+    "qos": "1",
+    "broker": "80e74793.a33ad8",
+    "x": 126.83321762084961,
+    "y": 570.6668033599854,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "2e12c4e7.702d5c",
+    "type": "mqtt in",
+    "z": "a47538b6.223c38",
+    "name": "",
+    "topic": "weatherStation/pressure",
+    "qos": "1",
+    "broker": "80e74793.a33ad8",
+    "x": 158.8331069946289,
+    "y": 402.66654872894287,
+    "wires": [
+      [
+        "cb7b589f.48f6c8"
+      ]
+    ]
+  },
+  {
+    "id": "6de4c724.5af4b8",
+    "type": "ui_chart",
+    "z": "a47538b6.223c38",
+    "name": "Pressure Chart",
+    "group": "2e16ce29.e93182",
+    "order": 6,
+    "width": "4",
+    "height": "3",
+    "label": "",
+    "chartType": "line",
+    "legend": "false",
+    "xformat": "HH:mm",
+    "interpolate": "linear",
+    "nodata": "",
+    "dot": false,
+    "ymin": "900",
+    "ymax": "1100",
+    "removeOlder": "8",
+    "removeOlderPoints": "",
+    "removeOlderUnit": "3600",
+    "cutout": 0,
+    "colors": [
+      "#1f77b4",
+      "#aec7e8",
+      "#ff7f0e",
+      "#2ca02c",
+      "#98df8a",
+      "#d62728",
+      "#ff9896",
+      "#9467bd",
+      "#c5b0d5"
+    ],
+    "useOldStyle": false,
+    "x": 664.0000076293945,
+    "y": 433.9998836517334,
+    "wires": [
+      [],
+      []
+    ]
+  },
+  {
+    "id": "cb7b589f.48f6c8",
+    "type": "function",
+    "z": "a47538b6.223c38",
+    "name": "pascal to hecto",
+    "func": "msg.payload *= 0.01;\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 421.9998321533203,
+    "y": 404.33325481414795,
+    "wires": [
+      [
+        "6de4c724.5af4b8",
+        "b726c556.cc82a8",
+        "12f5ecaf.d76503"
+      ]
+    ]
+  },
+  {
+    "id": "caf81eb2.7d338",
+    "type": "ui_gauge",
+    "z": "a47538b6.223c38",
+    "name": "",
+    "group": "2e16ce29.e93182",
+    "order": 3,
+    "width": "2",
+    "height": "3",
+    "gtype": "wave",
+    "title": "Humidity",
+    "label": "%",
+    "format": "{{value|number:1}}",
+    "min": 0,
+    "max": "100",
+    "colors": [
+      "#5a5a5a",
+      "#34b92d",
+      "#0202ff"
+    ],
+    "seg1": "",
+    "seg2": "",
+    "x": 637.9998359680176,
+    "y": 196.6665563583374,
+    "wires": []
+  },
+  {
+    "id": "1a03e7bb.c4df58",
+    "type": "ui_gauge",
+    "z": "a47538b6.223c38",
+    "name": "",
+    "group": "2e16ce29.e93182",
+    "order": 1,
+    "width": "2",
+    "height": "3",
+    "gtype": "gage",
+    "title": "Temperature",
+    "label": "°C",
+    "format": "{{value|number:1}}",
+    "min": "-20",
+    "max": "50",
+    "colors": [
+      "#0000ff",
+      "#e6e600",
+      "#ca3838"
+    ],
+    "seg1": "0",
+    "seg2": "30",
+    "x": 649.9998435974121,
+    "y": 294.6665630340576,
+    "wires": []
+  },
+  {
+    "id": "b726c556.cc82a8",
+    "type": "ui_gauge",
+    "z": "a47538b6.223c38",
+    "name": "",
+    "group": "2e16ce29.e93182",
+    "order": 5,
+    "width": "2",
+    "height": "3",
+    "gtype": "gage",
+    "title": "Pressure",
+    "label": "hPa",
+    "format": "{{value|number:2}}",
+    "min": "900",
+    "max": "1100",
+    "colors": [
+      "#00b500",
+      "#e6e600",
+      "#ca3838"
+    ],
+    "seg1": "",
+    "seg2": "",
+    "x": 641.9998435974121,
+    "y": 390.66658782958984,
+    "wires": []
+  },
+  {
+    "id": "32f62129.eea12e",
+    "type": "mqtt in",
+    "z": "a47538b6.223c38",
+    "name": "",
+    "topic": "weatherStation/light",
+    "qos": "1",
+    "broker": "80e74793.a33ad8",
+    "x": 138.83309936523438,
+    "y": 484.66659355163574,
+    "wires": [
+      [
+        "2e9a9951.db5166",
+        "12f5ecaf.d76503"
+      ]
+    ]
+  },
+  {
+    "id": "2e9a9951.db5166",
+    "type": "ui_gauge",
+    "z": "a47538b6.223c38",
+    "name": "",
+    "group": "2e16ce29.e93182",
+    "order": 8,
+    "width": "2",
+    "height": "3",
+    "gtype": "gage",
+    "title": "Light",
+    "label": "",
+    "format": "{{value|number:2}}",
+    "min": "0",
+    "max": "1",
+    "colors": [
+      "#000080",
+      "#c0c0c0",
+      "#ffff80"
+    ],
+    "seg1": "",
+    "seg2": "",
+    "x": 634.8331680297852,
+    "y": 482.66659355163574,
+    "wires": []
+  },
+  {
+    "id": "46ad0b69.a81f44",
+    "type": "mqtt in",
+    "z": "a47538b6.223c38",
+    "name": "",
+    "topic": "humiditySensor/humidity",
+    "qos": "1",
+    "broker": "80e74793.a33ad8",
+    "x": 133.99968719482422,
+    "y": 697.6666059494019,
+    "wires": [
+      [
+        "92d17f8.1e6768"
+      ]
+    ]
+  },
+  {
+    "id": "d48cfd67.983ba",
+    "type": "mqtt in",
+    "z": "a47538b6.223c38",
+    "name": "",
+    "topic": "humiditySensor/temperature",
+    "qos": "1",
+    "broker": "80e74793.a33ad8",
+    "x": 142.83304595947266,
+    "y": 784.666651725769,
+    "wires": [
+      [
+        "d08c2841.c38968"
+      ]
+    ]
+  },
+  {
+    "id": "4396d54e.bfd7fc",
+    "type": "mqtt in",
+    "z": "a47538b6.223c38",
+    "name": "",
+    "topic": "humiditySensor/voltage",
+    "qos": "1",
+    "broker": "80e74793.a33ad8",
+    "x": 116.83309936523438,
+    "y": 872.6666574478149,
+    "wires": [
+      [
+        "bc4221f1.3f3b3"
+      ]
+    ]
+  },
+  {
+    "id": "c3688360.af667",
+    "type": "ui_chart",
+    "z": "a47538b6.223c38",
+    "name": "Humidity Chart",
+    "group": "26a51e59.58bc22",
+    "order": 7,
+    "width": "4",
+    "height": "3",
+    "label": "",
+    "chartType": "line",
+    "legend": "false",
+    "xformat": "HH:mm",
+    "interpolate": "linear",
+    "nodata": "",
+    "dot": false,
+    "ymin": "0",
+    "ymax": "100",
+    "removeOlder": "8",
+    "removeOlderPoints": "",
+    "removeOlderUnit": "3600",
+    "cutout": 0,
+    "colors": [
+      "#1f77b4",
+      "#aec7e8",
+      "#ff7f0e",
+      "#2ca02c",
+      "#98df8a",
+      "#d62728",
+      "#ff9896",
+      "#9467bd",
+      "#c5b0d5"
+    ],
+    "useOldStyle": false,
+    "x": 634.8329544067383,
+    "y": 734.666446685791,
+    "wires": [
+      [],
+      []
+    ]
+  },
+  {
+    "id": "c9aa6303.940ef",
+    "type": "ui_gauge",
+    "z": "a47538b6.223c38",
+    "name": "",
+    "group": "26a51e59.58bc22",
+    "order": 6,
+    "width": "2",
+    "height": "3",
+    "gtype": "wave",
+    "title": "Humidity",
+    "label": "%",
+    "format": "{{value|number:1}}",
+    "min": 0,
+    "max": "100",
+    "colors": [
+      "#5a5a5a",
+      "#34b92d",
+      "#0202ff"
+    ],
+    "seg1": "",
+    "seg2": "",
+    "x": 611.999626159668,
+    "y": 684.6663722991943,
+    "wires": []
+  },
+  {
+    "id": "bc4221f1.3f3b3",
+    "type": "function",
+    "z": "a47538b6.223c38",
+    "name": "scale",
+    "func": "msg.payload *= 3.304 / 2788;\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 389.99966049194336,
+    "y": 877.6666584014893,
+    "wires": [
+      [
+        "814055dd.fbd628"
+      ]
+    ]
+  },
+  {
+    "id": "814055dd.fbd628",
+    "type": "ui_gauge",
+    "z": "a47538b6.223c38",
+    "name": "",
+    "group": "26a51e59.58bc22",
+    "order": 10,
+    "width": "2",
+    "height": "3",
+    "gtype": "gage",
+    "title": "Voltage",
+    "label": "V",
+    "format": "{{value|number:2}}",
+    "min": "0",
+    "max": "3.6",
+    "colors": [
+      "#8e0000",
+      "#e3e300",
+      "#00c400"
+    ],
+    "seg1": "2.5",
+    "seg2": "3",
+    "x": 640.8330879211426,
+    "y": 884.666576385498,
+    "wires": []
+  },
+  {
+    "id": "79a13898.a115d8",
+    "type": "ui_chart",
+    "z": "a47538b6.223c38",
+    "name": "Temperature Chart",
+    "group": "26a51e59.58bc22",
+    "order": 5,
+    "width": "4",
+    "height": "3",
+    "label": "",
+    "chartType": "line",
+    "legend": "false",
+    "xformat": "HH:mm",
+    "interpolate": "linear",
+    "nodata": "",
+    "dot": false,
+    "ymin": "10",
+    "ymax": "40",
+    "removeOlder": "8",
+    "removeOlderPoints": "",
+    "removeOlderUnit": "3600",
+    "cutout": 0,
+    "colors": [
+      "#1f77b4",
+      "#aec7e8",
+      "#ff7f0e",
+      "#2ca02c",
+      "#98df8a",
+      "#d62728",
+      "#ff9896",
+      "#9467bd",
+      "#c5b0d5"
+    ],
+    "useOldStyle": false,
+    "x": 646.8330001831055,
+    "y": 826.6665115356445,
+    "wires": [
+      [],
+      []
+    ]
+  },
+  {
+    "id": "aa00d0dd.a138b",
+    "type": "ui_gauge",
+    "z": "a47538b6.223c38",
+    "name": "",
+    "group": "26a51e59.58bc22",
+    "order": 4,
+    "width": "2",
+    "height": "3",
+    "gtype": "gage",
+    "title": "Temperature",
+    "label": "°C",
+    "format": "{{value|number:1}}",
+    "min": "-20",
+    "max": "50",
+    "colors": [
+      "#0000ff",
+      "#e6e600",
+      "#ca3838"
+    ],
+    "seg1": "0",
+    "seg2": "30",
+    "x": 626.8328437805176,
+    "y": 781.3330745697021,
+    "wires": []
+  },
+  {
+    "id": "925754a.3193aa8",
+    "type": "function",
+    "z": "a47538b6.223c38",
+    "name": "state to finished html icon",
+    "func": "//this one is buggy\n//I will fix it with the weather station video\n\nvar moon = \"&#127769;\";\nvar rain = \"&#127783;\";\nvar sun = \"&#127774\";\nvar cloud = \"&#9925;\";\n\ncontext.humidity = context.humidity | 50;\ncontext.light = context.light | 0.5;\ncontext.pressure = context.pressure | 1000;\n\nif(msg.topic === 'humidity' && msg.payload != 'nan')\n context.humidity = msg.payload;\nif(msg.topic === 'light' && msg.payload != 'nan')\n context.light = msg.payload;\nif(msg.topic === 'pressure' && msg.payload != 'nan')\n context.pressure = msg.payload;\n\nif(context.humidity < 50)\n{\n //if(context.light > 0.1)\n msg.payload = sun;\n //else\n // msg.payload = moon;\n}\nelse \nif(context.humidity < 80)\n{\n //if(context.light > 0.1)\n msg.payload = cloud;\n //else\n // msg.payload = moon;\n}\nelse\n{\n msg.payload = rain;\n}\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 734.8329544067383,
+    "y": 569.666446685791,
+    "wires": [
+      [
+        "85f2e904.a183d8"
+      ]
+    ]
+  },
+  {
+    "id": "12f5ecaf.d76503",
+    "type": "change",
+    "z": "a47538b6.223c38",
+    "name": "translate topic",
+    "rules": [
+      {
+        "t": "change",
+        "p": "topic",
+        "pt": "msg",
+        "from": "wheatherStation/humidity",
+        "fromt": "str",
+        "to": "humidity",
+        "tot": "str"
+      },
+      {
+        "t": "change",
+        "p": "topic",
+        "pt": "msg",
+        "from": "wheatherStation/temperature",
+        "fromt": "str",
+        "to": "temperature",
+        "tot": "str"
+      },
+      {
+        "t": "change",
+        "p": "topic",
+        "pt": "msg",
+        "from": "wheatherStation/light",
+        "fromt": "str",
+        "to": "light",
+        "tot": "str"
+      },
+      {
+        "t": "change",
+        "p": "topic",
+        "pt": "msg",
+        "from": "wheatherStation/pressure",
+        "fromt": "str",
+        "to": "pressure",
+        "tot": "str"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 470.8329544067383,
+    "y": 570.666446685791,
+    "wires": [
+      [
+        "925754a.3193aa8"
+      ]
+    ]
+  },
+  {
+    "id": "85f2e904.a183d8",
+    "type": "ui_template",
+    "z": "a47538b6.223c38",
+    "group": "2e16ce29.e93182",
+    "name": "Weather symbol",
+    "order": 7,
+    "width": "3",
+    "height": "3",
+    "format": "<div ng-bind-html=\"msg.payload\" style=\"font-size: 50pt\"></div>",
+    "storeOutMessages": true,
+    "fwdInMessages": true,
+    "templateScope": "local",
+    "x": 986.8329544067383,
+    "y": 563.666446685791,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "b316637a.a0cca",
+    "type": "debug",
+    "z": "a47538b6.223c38",
+    "name": "",
+    "active": true,
+    "console": "false",
+    "complete": "false",
+    "x": 367.9997367858887,
+    "y": 177.6664638519287,
+    "wires": []
+  },
+  {
+    "id": "45be7e03.37de3",
+    "type": "inject",
+    "z": "a47538b6.223c38",
+    "name": "",
+    "topic": "tick",
+    "payload": "",
+    "payloadType": "date",
+    "repeat": "1",
+    "crontab": "",
+    "once": false,
+    "x": 640,
+    "y": 1940,
+    "wires": [
+      [
+        "a1790fae.819c7"
+      ]
+    ]
+  },
+  {
+    "id": "d775e7a0.5d6708",
+    "type": "ui_template",
+    "z": "a47538b6.223c38",
+    "group": "fb34ff1.42da2",
+    "name": "Date Input",
+    "order": 5,
+    "width": 0,
+    "height": 0,
+    "format": "<input ng-model=\"me.item.value\" type=\"datetime-local\" style=\"z-index: 1;\" ng-change=\"send(me.item.value)\">",
+    "storeOutMessages": true,
+    "fwdInMessages": true,
+    "templateScope": "local",
+    "x": 63.999725341796875,
+    "y": 1776.3329992294312,
+    "wires": [
+      [
+        "f2c30cca.f7495"
+      ]
+    ]
+  },
+  {
+    "id": "a1790fae.819c7",
+    "type": "function",
+    "z": "a47538b6.223c38",
+    "name": "reduce countdown",
+    "func": "context.countdown = context.countdown || 0;\ncontext.active = context.active || false;\nif(msg.topic === \"countdown\")\n context.countdown = msg.payload;\nif(msg.topic === \"active\")\n{\n context.active = msg.payload;\n if(context.active === false)\n {\n msg.topic = \"countdown\";\n msg.payload = \"\";\n return msg;\n }\n}\nif(msg.topic === \"tick\" && context.countdown > 0 && context.active)\n{\n context.countdown--;\n msg.topic = \"countdown\";\n msg.payload = context.countdown;\n return msg;\n}\n\n",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 892.0001792907715,
+    "y": 1780.6665773391724,
+    "wires": [
+      [
+        "7a71282d.e5dfa8",
+        "288d9916.9b1086"
+      ]
+    ]
+  },
+  {
+    "id": "7a71282d.e5dfa8",
+    "type": "ui_text",
+    "z": "a47538b6.223c38",
+    "group": "fb34ff1.42da2",
+    "order": 7,
+    "width": 0,
+    "height": 0,
+    "name": "countdown",
+    "label": "Countdown",
+    "format": "{{msg.payload}}",
+    "layout": "row-spread",
+    "x": 1121.1667022705078,
+    "y": 1776.9999914169312,
+    "wires": []
+  },
+  {
+    "id": "a9027a62.4f6888",
+    "type": "ui_switch",
+    "z": "a47538b6.223c38",
+    "name": "",
+    "label": "Enable timer",
+    "group": "fb34ff1.42da2",
+    "order": 6,
+    "width": 0,
+    "height": 0,
+    "passthru": true,
+    "decouple": "false",
+    "topic": "active",
+    "style": "",
+    "onvalue": "true",
+    "onvalueType": "bool",
+    "onicon": "",
+    "oncolor": "",
+    "offvalue": "false",
+    "offvalueType": "bool",
+    "officon": "",
+    "offcolor": "",
+    "x": 660,
+    "y": 1476.0002174377441,
+    "wires": [
+      [
+        "a1790fae.819c7"
+      ]
+    ]
+  },
+  {
+    "id": "7d1bf6a1.8b8968",
+    "type": "mqtt in",
+    "z": "a47538b6.223c38",
+    "name": "",
+    "topic": "washingMachine/led1",
+    "qos": "1",
+    "broker": "12b7800c.02e78",
+    "x": 251.99964904785156,
+    "y": 1273.9997911453247,
+    "wires": [
+      [
+        "7bc4d200.91db7c",
+        "461723dc.4616ac"
+      ]
+    ]
+  },
+  {
+    "id": "a7dd545e.a4df48",
+    "type": "mqtt in",
+    "z": "a47538b6.223c38",
+    "name": "",
+    "topic": "washingMachine/led2",
+    "qos": "1",
+    "broker": "12b7800c.02e78",
+    "x": 255.99968719482422,
+    "y": 1205.9998350143433,
+    "wires": [
+      [
+        "b3139696.8e6ef8"
+      ]
+    ]
+  },
+  {
+    "id": "5c3d591d.7708f8",
+    "type": "mqtt in",
+    "z": "a47538b6.223c38",
+    "name": "",
+    "topic": "washingMachine/led3",
+    "qos": "1",
+    "broker": "12b7800c.02e78",
+    "x": 259.9996109008789,
+    "y": 1139.9997787475586,
+    "wires": [
+      [
+        "3ad5dd0a.145202"
+      ]
+    ]
+  },
+  {
+    "id": "2982aeef.e3ae62",
+    "type": "ui_toast",
+    "z": "a47538b6.223c38",
+    "position": "top right",
+    "displayTime": "3",
+    "highlight": "",
+    "outputs": 0,
+    "ok": "OK",
+    "cancel": "",
+    "topic": "",
+    "name": "",
+    "x": 1425.1665496826172,
+    "y": 1384.9998893737793,
+    "wires": []
+  },
+  {
+    "id": "ab1b9f69.7438f",
+    "type": "ui_switch",
+    "z": "a47538b6.223c38",
+    "name": "",
+    "label": "Notification",
+    "group": "fb34ff1.42da2",
+    "order": 8,
+    "width": 0,
+    "height": 0,
+    "passthru": true,
+    "decouple": "false",
+    "topic": "notify",
+    "style": "",
+    "onvalue": "true",
+    "onvalueType": "bool",
+    "onicon": "",
+    "oncolor": "",
+    "offvalue": "false",
+    "offvalueType": "bool",
+    "officon": "",
+    "offcolor": "",
+    "x": 917.1669998168945,
+    "y": 1358.9998865127563,
+    "wires": [
+      [
+        "461723dc.4616ac"
+      ]
+    ]
+  },
+  {
+    "id": "d240405f.e9be3",
+    "type": "ui_button",
+    "z": "a47538b6.223c38",
+    "name": "",
+    "group": "fb34ff1.42da2",
+    "order": 4,
+    "width": "3",
+    "height": "1",
+    "passthru": false,
+    "label": "Start/Stop",
+    "color": "",
+    "bgcolor": "",
+    "icon": "",
+    "payload": "1",
+    "payloadType": "str",
+    "topic": "",
+    "x": 1145.1665267944336,
+    "y": 1534.9999361038208,
+    "wires": [
+      [
+        "8ff91a26.090aa8",
+        "4f4e9cb0.4b2e64"
+      ]
+    ]
+  },
+  {
+    "id": "4f4e9cb0.4b2e64",
+    "type": "mqtt out",
+    "z": "a47538b6.223c38",
+    "name": "",
+    "topic": "washingMachine/servo",
+    "qos": "1",
+    "retain": "false",
+    "broker": "12b7800c.02e78",
+    "x": 1425.1665496826172,
+    "y": 1530.9998931884766,
+    "wires": []
+  },
+  {
+    "id": "8ff91a26.090aa8",
+    "type": "function",
+    "z": "a47538b6.223c38",
+    "name": "Stop Countdown",
+    "func": "msg.topic = \"active\";\nmsg.payload = false;\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 1419.1665420532227,
+    "y": 1699.9999866485596,
+    "wires": [
+      [
+        "a9027a62.4f6888"
+      ]
+    ]
+  },
+  {
+    "id": "288d9916.9b1086",
+    "type": "function",
+    "z": "a47538b6.223c38",
+    "name": "start if countdown 0",
+    "func": "if(msg.payload === 0)\n{\n msg.payload = \"1\";\n return msg;\n}",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 1133.1665344238281,
+    "y": 1701.9999856948853,
+    "wires": [
+      [
+        "8ff91a26.090aa8",
+        "4f4e9cb0.4b2e64"
+      ]
+    ]
+  },
+  {
+    "id": "dbdcb40f.5d3758",
+    "type": "ui_template",
+    "z": "a47538b6.223c38",
+    "group": "fb34ff1.42da2",
+    "name": "door icon",
+    "order": 1,
+    "width": "1",
+    "height": "1",
+    "format": "",
+    "storeOutMessages": true,
+    "fwdInMessages": true,
+    "templateScope": "local",
+    "x": 889.1663818359375,
+    "y": 1140.9997959136963,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "3ad5dd0a.145202",
+    "type": "function",
+    "z": "a47538b6.223c38",
+    "name": "state to lock html icon",
+    "func": "if(msg.payload === '0')\n msg.template = '<ui-icon icon=\"lock_open\"></ui-icon>';\nelse\n msg.template = '<ui-icon icon=\"lock\"></ui-icon>';\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 585.1665267944336,
+    "y": 1140.6664896011353,
+    "wires": [
+      [
+        "dbdcb40f.5d3758"
+      ]
+    ]
+  },
+  {
+    "id": "b3139696.8e6ef8",
+    "type": "function",
+    "z": "a47538b6.223c38",
+    "name": "state to washing html icon",
+    "func": "if(msg.payload === '0')\n msg.template = '<ui-icon icon=\"crop_square\"></ui-icon>';\nelse\n msg.template = '<ui-icon icon=\"play_arrow\"></ui-icon>';\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 593.9996643066406,
+    "y": 1201.999794960022,
+    "wires": [
+      [
+        "cccb8209.393ac"
+      ]
+    ]
+  },
+  {
+    "id": "7bc4d200.91db7c",
+    "type": "function",
+    "z": "a47538b6.223c38",
+    "name": "state to finished html icon",
+    "func": "if(msg.payload === '0')\n msg.template = '<ui-icon icon=\"hourglass_empty\"></ui-icon>';\nelse\n msg.template = '<ui-icon icon=\"done_all\"></ui-icon>';\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 601.999626159668,
+    "y": 1277.9997873306274,
+    "wires": [
+      [
+        "2f18a1af.2c4b1e"
+      ]
+    ]
+  },
+  {
+    "id": "cccb8209.393ac",
+    "type": "ui_template",
+    "z": "a47538b6.223c38",
+    "group": "fb34ff1.42da2",
+    "name": "washing icon",
+    "order": 2,
+    "width": "1",
+    "height": "1",
+    "format": "",
+    "storeOutMessages": true,
+    "fwdInMessages": true,
+    "templateScope": "local",
+    "x": 899.9997634887695,
+    "y": 1203.9998044967651,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "2f18a1af.2c4b1e",
+    "type": "ui_template",
+    "z": "a47538b6.223c38",
+    "group": "fb34ff1.42da2",
+    "name": "finished icon",
+    "order": 3,
+    "width": "1",
+    "height": "1",
+    "format": "",
+    "storeOutMessages": true,
+    "fwdInMessages": true,
+    "templateScope": "local",
+    "x": 893.9996871948242,
+    "y": 1277.9997968673706,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "87dc8e4f.c6fd3",
+    "type": "mqtt in",
+    "z": "a47538b6.223c38",
+    "name": "",
+    "topic": "washingMachine/servo",
+    "qos": "1",
+    "broker": "12b7800c.02e78",
+    "x": 253.9996566772461,
+    "y": 1349.9998426437378,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "461723dc.4616ac",
+    "type": "function",
+    "z": "a47538b6.223c38",
+    "name": "notify when finished",
+    "func": "context.notifyMe = context.notifyMe || false;\nif(msg.topic === 'notify')\n context.notifyMe = msg.payload;\n \nif(msg.topic === 'washingMachine/led1' && msg.payload === \"1\" && context.notifyMe)\n{\n msg.topic = 'notify';\n msg.payload = false;\n return msg;\n}\n",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 927.9996871948242,
+    "y": 1445.9998121261597,
+    "wires": [
+      [
+        "ab1b9f69.7438f",
+        "d3fb6d28.5f188"
+      ]
+    ]
+  },
+  {
+    "id": "d3fb6d28.5f188",
+    "type": "function",
+    "z": "a47538b6.223c38",
+    "name": "notification message",
+    "func": "msg.topic = 'Washing Machine';\nmsg.payload = 'Finished washing!';\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 1195.1665344238281,
+    "y": 1436.9998893737793,
+    "wires": [
+      [
+        "2982aeef.e3ae62",
+        "95754532.473a98"
+      ]
+    ]
+  },
+  {
+    "id": "95754532.473a98",
+    "type": "ui_audio",
+    "z": "a47538b6.223c38",
+    "name": "Audio",
+    "group": "fb34ff1.42da2",
+    "voice": "2",
+    "always": true,
+    "x": 1403.1663818359375,
+    "y": 1469.3331842422485,
+    "wires": []
+  },
+  {
+    "id": "fd5dca0.bae2e38",
+    "type": "function",
+    "z": "a47538b6.223c38",
+    "name": "time string to millis",
+    "func": "var d = new Date(msg.payload); \nmsg.topic = \"teargetTimestamp\"\nmsg.payload = d.getTime();\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 409.99966049194336,
+    "y": 1773.9998631477356,
+    "wires": [
+      [
+        "83c6acc1.295f9"
+      ]
+    ]
+  },
+  {
+    "id": "f2c30cca.f7495",
+    "type": "function",
+    "z": "a47538b6.223c38",
+    "name": "msg",
+    "func": "\nreturn {topic: '', payload: msg};",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 231.9993019104004,
+    "y": 1771.3329963684082,
+    "wires": [
+      [
+        "fd5dca0.bae2e38"
+      ]
+    ]
+  },
+  {
+    "id": "83c6acc1.295f9",
+    "type": "function",
+    "z": "a47538b6.223c38",
+    "name": "set countdown in seconds",
+    "func": "msg.topic = \"countdown\";\nmsg.payload = Math.floor(((msg.payload - Date.now()) / 1000));\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 639.9995765686035,
+    "y": 1771.9998254776,
+    "wires": [
+      [
+        "a1790fae.819c7"
+      ]
+    ]
+  },
+  {
+    "id": "d101873e.48c8a8",
+    "type": "smooth",
+    "z": "a47538b6.223c38",
+    "name": "",
+    "action": "mean",
+    "count": "100",
+    "round": "",
+    "mult": "single",
+    "x": 405.99974060058594,
+    "y": 213.6665210723877,
+    "wires": [
+      [
+        "38bceaaf.392256",
+        "caf81eb2.7d338"
+      ]
+    ]
+  },
+  {
+    "id": "92d17f8.1e6768",
+    "type": "smooth",
+    "z": "a47538b6.223c38",
+    "name": "",
+    "action": "mean",
+    "count": "6",
+    "round": "",
+    "mult": "single",
+    "x": 379.9995307922363,
+    "y": 701.6663370132446,
+    "wires": [
+      [
+        "c3688360.af667",
+        "c9aa6303.940ef"
+      ]
+    ]
+  },
+  {
+    "id": "d08c2841.c38968",
+    "type": "smooth",
+    "z": "a47538b6.223c38",
+    "name": "",
+    "action": "mean",
+    "count": "6",
+    "round": "",
+    "mult": "single",
+    "x": 374.8330764770508,
+    "y": 790.6665706634521,
+    "wires": [
+      [
+        "aa00d0dd.a138b",
+        "79a13898.a115d8"
+      ]
+    ]
+  },
+  {
+    "id": "a69d6a2e.7ccb48",
+    "type": "comment",
+    "z": "81b9956f.f67058",
+    "name": "Get Entry From MongoDB",
+    "info": "",
+    "x": 310,
+    "y": 600,
+    "wires": []
+  },
+  {
+    "id": "73472a3d.235ed4",
+    "type": "comment",
+    "z": "81b9956f.f67058",
+    "name": "Clean DB Each Hour",
+    "info": "",
+    "x": 290,
+    "y": 740,
+    "wires": []
+  },
+  {
+    "id": "d798526d.e81c",
+    "type": "comment",
+    "z": "81b9956f.f67058",
+    "name": "Post and Get Usermap/MAC Address",
+    "info": "",
+    "x": 350,
+    "y": 880,
+    "wires": []
+  },
+  {
+    "id": "8adde30d.837c",
+    "type": "http in",
+    "z": "81b9956f.f67058",
+    "name": "POST /api/v1/usermap",
+    "url": "/api/v1/usermap",
+    "method": "post",
+    "upload": false,
+    "swaggerDoc": "80c1e140.375d3",
+    "x": 300,
+    "y": 940,
+    "wires": [
+      [
+        "3a7d6cc5.012474"
+      ]
+    ]
+  },
+  {
+    "id": "5e0ec538.e079ec",
+    "type": "http response",
+    "z": "81b9956f.f67058",
+    "name": "",
+    "statusCode": "",
+    "headers": {},
+    "x": 770,
+    "y": 940,
+    "wires": []
+  },
+  {
+    "id": "3a7d6cc5.012474",
+    "type": "mongodb2 in",
+    "z": "81b9956f.f67058",
+    "service": "_ext_",
+    "configNode": "ad560c28.09535",
+    "name": "insert usermap",
+    "collection": "usermap",
+    "operation": "insert",
+    "x": 560,
+    "y": 940,
+    "wires": [
+      [
+        "5e0ec538.e079ec"
+      ]
+    ]
+  },
+  {
+    "id": "fa24c479.f2e658",
+    "type": "debug",
+    "z": "81b9956f.f67058",
+    "name": "",
+    "active": true,
+    "console": "false",
+    "complete": "true",
+    "x": 500,
+    "y": 620,
+    "wires": []
+  },
+  {
+    "id": "19cd041d.a90e7c",
+    "type": "debug",
+    "z": "81b9956f.f67058",
+    "name": "",
+    "active": true,
+    "console": "false",
+    "complete": "true",
+    "x": 510,
+    "y": 1060,
+    "wires": []
+  },
+  {
+    "id": "425489f1.02e878",
+    "type": "debug",
+    "z": "81b9956f.f67058",
+    "name": "",
+    "active": true,
+    "console": "false",
+    "complete": "true",
+    "x": 610,
+    "y": 480,
+    "wires": []
+  },
+  {
+    "id": "5d220258.87fc5c",
+    "type": "debug",
+    "z": "81b9956f.f67058",
+    "name": "",
+    "active": false,
+    "console": "false",
+    "complete": "true",
+    "x": 770,
+    "y": 480,
+    "wires": []
+  },
+  {
+    "id": "d1c037c9.f7c1a8",
+    "type": "debug",
+    "z": "81b9956f.f67058",
+    "name": "",
+    "active": true,
+    "console": "false",
+    "complete": "true",
+    "x": 830,
+    "y": 620,
     "wires": []
   }
 ]
