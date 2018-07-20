@@ -23,7 +23,6 @@ FROM nodered/node-red-docker
  RUN npm install node-red-contrib-json -save
  RUN npm install node-red-contrib-meraki-cmx -save
  RUN npm install node-red-contrib-mongodb2 -save
- RUN npm install node-red-contrib-slackbot -save
  RUN npm install node-red-contrib-spark -save
  RUN npm install node-red-node-google -save
  RUN npm install node-red-node-mongodb -save
@@ -31,8 +30,9 @@ FROM nodered/node-red-docker
  RUN npm install node-red-node-twilio -save
  RUN npm install node-red-contrib-ale-rainbow -save
  RUN npm install node-red-node-email -save
- RUN npm install node-red-contrib-chatbot -save
+ # RUN npm install node-red-contrib-chatbot -save
  RUN npm install node-red-contrib-web-worldmap -save
+ RUN npm install node-red-dashboard -save
 
  # RUN npm install
  COPY flows.json /root/.node-red/flows.json
