@@ -112,6 +112,7 @@
     "node-red-node-swagger": "^0.1.8",
     "node-red-node-twilio": "0.0.15",
     "node-red-node-twitter": "^0.1.15",
+    "node-red-contrib-cognitive-services": "*",
     "nopt": "3.0.6",
     "oauth2orize": "1.8.0",
     "on-headers": "1.0.1",
